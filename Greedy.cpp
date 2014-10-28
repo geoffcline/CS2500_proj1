@@ -20,7 +20,6 @@ int GreedyKS(const KS_List& A, const int maxw )
     }
     
     return P_wgt;
-    //hey look i have stuff;
 }
 
 void QuickSortP(KS_List& work)

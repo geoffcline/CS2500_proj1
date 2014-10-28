@@ -1,11 +1,15 @@
 #include "Greedy.h"
 #include "KnapSack.h"
+#include <fstream>
+
 
 int main ()
 {
   clock_t t;
   int maxw;
   int r;
+  ofstream fout;   // out is a stream that will stream data to a file
+  fout.open("table.csv");
     
   const float SIGMA = 0;
   const float MU = 0;
@@ -20,7 +24,7 @@ int main ()
     t = clock();
     r = GreedyKS(L_working, maxw);
     t = clock() - t;
-    cout << "\"GREEDY\",\"" << i << "\",\"" << t << "\"" << endl;
+    fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\"" << endl;
   }
 
   return 0;

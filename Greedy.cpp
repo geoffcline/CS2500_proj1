@@ -1,7 +1,7 @@
 #include "KnapSack.h"
 #include "Greedy.h"
 
-int GreedyKS(const KS_List& A, const int maxw )
+int GreedyKS(const KS_List& A, const int maxw)
 {
     KS_List W = A;
 

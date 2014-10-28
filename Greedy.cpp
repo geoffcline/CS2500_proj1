@@ -9,14 +9,15 @@ int GreedyKS(const KS_List& A, const int maxw )
     
     QuickSortP(W);
     
-    while(partw + W[j] -> getweight() <= maxw && j < W.getsize())
+    while(P_wgt + W[j] -> getweight() <= maxw && j < W.getsize())
     {
-        partw += D[j] -> getweight();
-        partv += D[j] -> getvalue();
+        P_wgt += W[j] -> getweight();
+        P_vl += W[j] -> getvalue();
         j++;
     }
     
-    return partv;
+    return P_wgt;
+    //hey look i have stuff;
 }
 
 void QuickSortP(KS_List& work)

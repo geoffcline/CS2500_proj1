@@ -1,7 +1,12 @@
-void main ()
+int main ()
 {
   clock_t t;
   int maxw;
+    
+  const float SIGMA = 0;
+  const float MU = 0;
+  const int SIZE = 0;
+  const int TESTS = 0;
 
   KS_List L_working(SIGMA, MU, SIZE);
 
@@ -14,5 +19,5 @@ void main ()
     fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\"" << endl; 
   }
 
-  return;
+  return 0;
 }

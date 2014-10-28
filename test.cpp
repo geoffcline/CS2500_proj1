@@ -1,7 +1,11 @@
+#include "Greedy.h"
+#include "KnapSack.h"
+
 int main ()
 {
   clock_t t;
   int maxw;
+  int r;
     
   const float SIGMA = 0;
   const float MU = 0;
@@ -12,11 +16,11 @@ int main ()
 
   for (int i = 0; i < TESTS; ++i)
   {
-    L_working.generate()
+    L_working.generate();
     t = clock();
-    GreedyKS(L_working, maxw);
+    r = GreedyKS(L_working, maxw);
     t = clock() - t;
-    fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\"" << endl; 
+    fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\"" << endl;
   }
 
   return 0;

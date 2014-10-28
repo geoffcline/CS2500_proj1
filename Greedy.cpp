@@ -1,3 +1,6 @@
+#include "KnapSack.h"
+#include "Greedy.h"
+
 int GreedyKS(const KS_List& A, const int maxw )
 {
     KS_List W = A;
@@ -22,7 +25,7 @@ int GreedyKS(const KS_List& A, const int maxw )
 
 void QuickSortP(KS_List& work)
 {
-  QuickSortP(work.A, 0, work.getsize());
+  QuickSortP(work.Data, 0, work.getsize());
 }
 
 template <typename T>

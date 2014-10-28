@@ -20,7 +20,7 @@ int main ()
     t = clock();
     r = GreedyKS(L_working, maxw);
     t = clock() - t;
-    fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\"" << endl;
+    cout << "\"GREEDY\",\"" << i << "\",\"" << t << "\"" << endl;
   }
 
   return 0;

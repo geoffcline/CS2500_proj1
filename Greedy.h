@@ -2,6 +2,8 @@
 #define GREEDY_H
 
 #include <iostream>
+#include "KnapSack.h"
+#include "Greedy.h"
 
 using namespace std;
 

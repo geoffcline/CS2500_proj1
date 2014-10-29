@@ -6,7 +6,7 @@ KS_List bruteforceKS(const KS_List& item, const int maxw)
 
   int A[n]; //array of binary values to create all combos
   KS_List currentChoice = item; //creates list of size item.getsize to hold current subset
-  KW_List bestChoice = item;    //creates list of size item.getsize to hold max subset
+  KS_List bestChoice = item;    //creates list of size item.getsize to hold max subset
   currentChoice.clear();        //clears both
   bestChoice.clear();
 
@@ -38,10 +38,10 @@ KS_List bruteforceKS(const KS_List& item, const int maxw)
 
     for(int k =1; k<n;k++) //creates combo out of items and keeps track of weight and value
     {
-      if(A[k] = 1)
+      if(A[k] == 1)
       {
-      	currentWeight = currentWeight + item[k].getweight();
-      	currentValue = currentValue + item[k].getvalue();
+      	currentWeight = currentWeight + item[k] -> getweight();
+      	currentValue = currentValue + item[k] -> getvalue();
         currentChoice[m] = item[k];
         m++;
       }

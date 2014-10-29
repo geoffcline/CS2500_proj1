@@ -28,7 +28,7 @@ int PivotP(T** A, int start, int end)
   int  p = start;
   T pivotElement = *A[start];
   
-  for(int i = start+1 ; i <= end ; i++)
+  for(int i = start+1 ; i < end ; i++)
   {
     if(*A[i] <= pivotElement)
     {

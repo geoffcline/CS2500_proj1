@@ -1,6 +1,7 @@
 #include "Greedy.h"
 #include "KnapSack.h"
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -15,22 +16,25 @@ int main ()
   int maxw;
   int resultv;
     
-  const float SIGMA = 0;
-  const float MU = 0;
-  const int   SIZE = 0;
-  const int   TESTS = 0;
+  const float SIGMA = 25;
+  const float MU = 100;
+  const int   SIZE = 10;
+  const int   TESTS = 10;
   
 
   KS_List L_working(SIGMA, MU, SIZE);
 
   for (int i = 0; i < TESTS; ++i)
   {
+    cout << "TEST: " << i << endl;
     L_working.generate();
     t = clock();
               //WHY DON'T YOU KNOW GREEDYKS? 
     resultv = GreedyKS(L_working, maxw);
     t = clock() - t;
-    fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\"" << endl;
+    fout << "\"GREEDY\",\"" << i << "\",\""
+         << static_cast<float>(t) / CLOCKS_PER_SEC
+         << "\"" << endl;
   }
 
   return 0;

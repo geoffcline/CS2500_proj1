@@ -21,7 +21,6 @@ int GreedyKS(const KS_List& A, const int maxw)
       
       P_wgt += W[j] -> getweight();
       P_vl += W[j] -> getvalue();
-      j++;
     }
   }
   

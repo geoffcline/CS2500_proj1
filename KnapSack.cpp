@@ -25,13 +25,14 @@ const KS_Item& KS_Item::operator= (const KS_Item& rhs)
 void KS_List::generate()
 {
   clear();
-
+  
+  default_random_engine generator;
   normal_distribution<int> gauss(getmu(),getsigma());
 
   Data = new KS_Item*[getsize()];
 
   for (int i = 0; i < size; ++i)
-    Data[i] = new KS_Item(gauss(), gauss());
+    Data[i] = new KS_Item(gauss(generator), gauss(generator));
 
 }
 

@@ -6,9 +6,6 @@
 int GreedyKS(const KS_List& A, const int maxw);
 
 template <typename T>
-void swap(T lhs, T rhs);
-
-template <typename T>
 int PivotP(T** work, const int start, const int end);
 
 void QuickSortP(KS_List& work);

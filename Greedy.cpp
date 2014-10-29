@@ -23,14 +23,6 @@ int GreedyKS(const KS_List& A, const int maxw)
 }
 
 template <typename T>
-void swap(T lhs, T rhs)
-{
-  T hold = lhs;
-  lhs = rhs;
-  rhs = hold;
-}
-
-template <typename T>
 int PivotP(T** A, int start, int end)
 {
   int  p = start;

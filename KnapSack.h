@@ -1,6 +1,10 @@
 #ifndef KNAPSACK_H
 #define KNAPSACK_H
 
+#include <random>
+
+using namespace std;
+
 class KS_Item
 {
 private:

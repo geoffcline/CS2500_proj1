@@ -6,6 +6,7 @@ using namespace std;
 
 int main ()
 {
+  
   clock_t t;
   
   ofstream fout;

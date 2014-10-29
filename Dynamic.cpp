@@ -44,9 +44,6 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 			}
 		}
 	}
-<<<<<<< Updated upstream
-	return sackValues[maxw][sizeOfList];
-=======
   
   for (int i = 0; i < maxw; i++)
 	{
@@ -57,5 +54,5 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
   
   
 	return sackValues[sizeOfList][maxw];
->>>>>>> Stashed changes
+
 }

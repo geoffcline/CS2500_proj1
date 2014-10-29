@@ -1,5 +1,6 @@
 #include "KnapSack.h"
 #include "Greedy.h"
+#include <iostream>
 
 int GreedyKS(const KS_List& A, const int maxw)
 {
@@ -11,6 +12,7 @@ int GreedyKS(const KS_List& A, const int maxw)
   int j = 0;
   
   QuickSortP(W);
+  cout << "quicksort done" << endl;
   
   while(P_wgt + W[j] -> getweight() <= maxw && j < W.getsize())
   {
@@ -55,6 +57,7 @@ void QuickSortP(T** A, int start, int end)
   if (start < end)
   {
     pivotElement = PivotP(A, start, end);
+    cout << "pivot done" << endl;
     QuickSortP(A, start, pivotElement - 1);
     QuickSortP(A, pivotElement + 1, end);
   }

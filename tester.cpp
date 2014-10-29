@@ -2,12 +2,13 @@
 #include "KnapSack.h"
 #include <fstream>
 
+using namespace std;
 
 int main ()
 {
   clock_t t;
   
-  ofstream fout; 
+  ofstream fout;
   fout.open("table.csv");
   
   int maxw;
@@ -25,6 +26,7 @@ int main ()
   {
     L_working.generate();
     t = clock();
+              //WHY DON'T YOU KNOW GREEDYKS? 
     resultv = GreedyKS(L_working, maxw);
     t = clock() - t;
     fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\"" << endl;

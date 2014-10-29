@@ -36,12 +36,12 @@ void KS_List::generate()
 {
   
   default_random_engine generator;
-  normal_distribution<int> gauss(getmu(),getsigma());
+  normal_distribution<float> gauss(getmu(),getsigma());
 
   Data = new KS_Item*[getsize()];
 
   for (int i = 0; i < getsize(); ++i)
-    Data[i] = new KS_Item(gauss(generator), gauss(generator));
+    Data[i] = new KS_Item(static_cast<int>(gauss(generator)), static_cast<int>(gauss(generator)));
 
 }
 

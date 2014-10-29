@@ -24,7 +24,15 @@ const KS_Item& KS_Item::operator= (const KS_Item& rhs)
 
 void KS_List::generate()
 {
-  //help how do I normal distrubution
+  clear();
+
+  normal_distribution<int> gauss(getmu(),getsigma());
+
+  Data = new KS_Item*[getsize()];
+
+  for (int i = 0; i < size; ++i)
+    Data[i] = new KS_Item(gauss(), gauss());
+
 }
 
 void  KS_List::clear()
@@ -34,7 +42,7 @@ void  KS_List::clear()
 
   delete [] Data;
 
-  Data = nullptr;
+  Data = NULL;
 
   size = 0;
 }

@@ -1,7 +1,5 @@
 CS2500: Algorithms Project 1
 ============
-## Issues:
-1. Compiling w/ Putty segfaults sometimes after quicksort?
 
 ## Data Structures:
 

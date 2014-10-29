@@ -7,6 +7,6 @@
 
 using namespace std;
 
-KS_List bruteforceKS(const KS_List& item, const int maxw);
+int bruteforceKS(const KS_List& item, const int maxw);
 
 #endif

@@ -1,21 +1,16 @@
 #include "bruteforce.h"
 
-KS_List bruteforceKS(const KS_List& item, const int maxw)
+int bruteforceKS(const KS_List& item, const int maxw)
 {
   int n = item.getsize(); //used multiple times so variable for total amount of items
 
   int A[n]; //array of binary values to create all combos
-  KS_List currentChoice = item; //creates list of size item.getsize to hold current subset
-  KS_List bestChoice = item;    //creates list of size item.getsize to hold max subset
-  currentChoice.clear();        //clears both
-  bestChoice.clear();
 
   for(int x=0;x<item.getsize();x++) //sets all elements to 0
   {
   	A[x]=0;
   }
 
-  int m = 0; //used to increment item placement into currentChoice list
   int j = 0; //used for making all combos
   int currentWeight=0; //used to keep track of weight in currentChoice
   int currentValue=0;  //same for above except for value
@@ -42,8 +37,6 @@ KS_List bruteforceKS(const KS_List& item, const int maxw)
       {
       	currentWeight = currentWeight + item[k] -> getweight();
       	currentValue = currentValue + item[k] -> getvalue();
-        currentChoice[m] = item[k];
-        m++;
       }
 
     }
@@ -52,7 +45,6 @@ KS_List bruteforceKS(const KS_List& item, const int maxw)
     {
       bestValue = currentValue;
       bestWeight = currentWeight;
-      bestChoice = currentChoice;
     }
      
     
@@ -60,6 +52,6 @@ KS_List bruteforceKS(const KS_List& item, const int maxw)
 
   }
 
-  return bestChoice; //returns max set
+  return bestValue; //returns max set
 
 }

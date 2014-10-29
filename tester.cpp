@@ -34,7 +34,7 @@ int main ()
          << "\"" << endl;
   }
 
-  fout.close()
+  fout.close();
 
   return 0;
 }

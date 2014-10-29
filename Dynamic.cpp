@@ -54,7 +54,8 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 	}
   
 	delete [] sackValues;
-  
-	return sackValues[sizeOfList][maxw];
+
+	
+	return sackValues[maxw][sizeOfList];
 
 }

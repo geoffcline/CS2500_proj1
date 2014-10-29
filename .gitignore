@@ -69,3 +69,6 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+
+#output files
+*.csv

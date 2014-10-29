@@ -10,7 +10,7 @@ int main ()
   const float SIGMA = 25;
   const float MU = 100;
   const int   SIZE = 10;
-  const int   TESTS = 10000;
+  const int   TESTS = 1000;
   const int   MAXW = 1000;
   
   clock_t t;

@@ -25,13 +25,15 @@ const KS_Item& KS_Item::operator= (const KS_Item& rhs)
 
 void KS_List::generate(const int newsz)
 {
-  
+  static default_random_engine generator(static_cast<unsigned int>(time(0)));
+  normal_distribution<float> gauss(getmu(),getsigma());
+
   clear();
   
   size = newsz;
   
-  default_random_engine generator(static_cast<unsigned int>(time(0)));
-  normal_distribution<float> gauss(getmu(),getsigma());
+  
+  
   
   Data = new KS_Item*[getsize()];
   

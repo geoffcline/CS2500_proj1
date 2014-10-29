@@ -32,9 +32,6 @@ void KS_List::generate(const int newsz)
   
   size = newsz;
   
-  
-  
-  
   Data = new KS_Item*[getsize()];
   
   for (int i = 0; i < getsize(); ++i)

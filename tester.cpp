@@ -1,5 +1,6 @@
 #include "Greedy.h"
 #include "KnapSack.h"
+#include "bruteforce.h"
 #include <fstream>
 #include <iostream>
 
@@ -24,14 +25,20 @@ int main ()
 
   for (int i = 0; i < TESTS; ++i)
   {
+    //GREEDY APPROACH
     cout << "GREEDY TEST: \t" << i << endl;
     L_working.generate();
     t = clock();
     resultv = GreedyKS(L_working, MAXW);
     t = clock() - t;
-    fout << "\"GREEDY\",\"" << i << "\",\""
-         << t
-         << "\"" << endl;
+    fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    
+    //BRUTE FORCE
+    cout << "BRUTE TEST: \t" << i << endl;
+    t = clock();
+    resultv = bruteforceKS(L_working, MAXW);
+    t = clock() - t;
+    fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
   }
 
   fout.close();

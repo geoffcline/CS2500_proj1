@@ -1,4 +1,5 @@
 #include "bruteforce.h"
+#include <cmath>
 
 int bruteforceKS(const KS_List& item, const int maxw)
 {
@@ -17,7 +18,7 @@ int bruteforceKS(const KS_List& item, const int maxw)
   int bestValue=0;     //keeps track of max value obtained by a combo of items
   int bestWeight=0;    //same as above except for weight
 
-  for(int i=1;i<(2^n);i++)
+  for(int i=1;i<pow(2,n);i++)
   {
     j = n;          
     currentValue=0;     //resets variables so a new combo can be made
@@ -35,8 +36,8 @@ int bruteforceKS(const KS_List& item, const int maxw)
     {
       if(A[k] == 1)
       {
-      	currentWeight = currentWeight + item[k] -> getweight();
-      	currentValue = currentValue + item[k] -> getvalue();
+      	currentWeight += item[k] -> getweight();
+      	currentValue += item[k] -> getvalue();
       }
 
     }

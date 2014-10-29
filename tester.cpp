@@ -1,6 +1,7 @@
 #include "Greedy.h"
 #include "KnapSack.h"
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -11,6 +12,7 @@ int main ()
   ofstream fout;
   
   fout.open("result.csv");
+  fout << "\"C/S\",\"" << CLOCKS_PER_SEC << "\"" << endl;
   
   
   int maxw;
@@ -26,14 +28,13 @@ int main ()
 
   for (int i = 0; i < TESTS; ++i)
   {
-    fout << "TEST: " << i << endl;
+    cout << "GREEDY TEST: " << i << endl;
     L_working.generate();
     t = clock();
-              //WHY DON'T YOU KNOW GREEDYKS? 
     resultv = GreedyKS(L_working, maxw);
     t = clock() - t;
     fout << "\"GREEDY\",\"" << i << "\",\""
-         << static_cast<float>(t) / CLOCKS_PER_SEC
+         << t
          << "\"" << endl;
   }
 

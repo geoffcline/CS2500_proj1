@@ -24,6 +24,7 @@ const KS_Item& KS_Item::operator= (const KS_Item& rhs)
 
 void KS_List::generate(const int newsz)
 {
+  
   clear();
   
   size = newsz;

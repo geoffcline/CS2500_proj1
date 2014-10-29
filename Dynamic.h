@@ -5,4 +5,4 @@
 
 #include "KnapSack.h"
 
-int DP_KNAPSACK(const KS_List& A, const maxw);
+int DP_KNAPSACK(const KS_List& A, const int maxw);

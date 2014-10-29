@@ -4,10 +4,10 @@
 //CPP File
 
 #include "KnapSack.h"
-#include "Dynamics.h"
+#include "Dynamic.h"
 #include <iostream>
 
-int DP_KNAPSACK(const KS_List& A, const maxw)
+int DP_KNAPSACK(const KS_List& A, const int maxw)
 {
 
 //Variable to be used later
@@ -28,12 +28,12 @@ int DP_KNAPSACK(const KS_List& A, const maxw)
 	}
 	
 //Goes through the entire 2D array starting at row 1 to set the the max value
-	for (i = 1; i < sizeOfList; i++)
+	for (int i = 1; i < sizeOfList; i++)
 	{
-		for (j = 0; j < maxw; j++)
+		for (int j = 0; j < maxw; j++)
 		{
-			currentW = Data[i] -> getweight();
-			currentV = Data[i] -> getvalue();	
+			currentW = A[i] -> getweight();
+			currentV = A[i] -> getvalue();
 			if ( (currentW <= j) && ( (currentV + sackValues[i-1][j-currentW]) > sackValues[i-1][j] ) )
 			{
 				sackValues[i][j] = currentV + sackValues[i-1][j-currentW];

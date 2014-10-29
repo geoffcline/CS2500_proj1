@@ -1,6 +1,7 @@
 #include "Greedy.h"
 #include "KnapSack.h"
 #include "bruteforce.h"
+#include "Dynamic.h"
 #include <fstream>
 #include <iostream>
 

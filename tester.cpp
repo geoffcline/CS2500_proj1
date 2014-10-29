@@ -28,7 +28,6 @@ int main ()
     L_working.generate();
     t = clock();
     resultv = GreedyKS(L_working, MAXW);
-    cout << "GREEDY DONE: \t" << i << endl;
     t = clock() - t;
     fout << "\"GREEDY\",\"" << i << "\",\""
          << t

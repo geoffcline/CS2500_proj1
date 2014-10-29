@@ -40,7 +40,6 @@ void KS_List::generate(const int newsz)
   for (int i = 0; i < getsize(); ++i)
   {
     Data[i] = new KS_Item(static_cast<int>(gauss(generator)), static_cast<int>(gauss(generator)));
-    cout << "item " << i << endl;
   }
   
   

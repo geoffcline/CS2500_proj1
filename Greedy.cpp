@@ -11,13 +11,10 @@ int GreedyKS(const KS_List& A, const int maxw)
   
   int j;
   
-  cout << "quicksort start" << endl;
   QuickSortP(W);
-  cout << "quicksort done" << endl;
   
   for (j=0; j < W.getsize(); j++)
   {
-    cout << "weight " <<  j << ": " << W[j] -> getweight() << endl;
     
     if((P_wgt + W[j] -> getweight()) <= maxw)
     {
@@ -25,11 +22,9 @@ int GreedyKS(const KS_List& A, const int maxw)
       P_wgt += W[j] -> getweight();
       P_vl += W[j] -> getvalue();
       j++;
-      cout << "added item" << endl;
     }
   }
   
-  cout << "final value: " << P_vl << endl;
   
   return P_vl;
 }
@@ -67,7 +62,6 @@ void QuickSortP(T** A, int start, int end)
   if (start < end)
   {
     pivotElement = PivotP(A, start, end);
-    cout << "pivot done" << endl;
     QuickSortP(A, start, pivotElement - 1);
     QuickSortP(A, pivotElement + 1, end);
   }

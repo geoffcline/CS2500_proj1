@@ -46,7 +46,7 @@ public:
   friend void QuickSortP(KS_List& rhs);
   KS_Item* operator [] (const int i) const {return Data[i];}
   KS_List(const KS_List &rhs) {*this = rhs;};
-  KS_List(const float s = 0, const float m = 0, const int sz = 1): sigma(s), mu(m) {generate(sz);}
+    KS_List(const float s = 0, const float m = 0, const int sz = 1): sigma(s), mu(m), size(0) {generate(sz);}
   ~KS_List() {clear();}
   const KS_List& operator= (const KS_List& rhs);
 };

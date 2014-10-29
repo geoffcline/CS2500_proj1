@@ -47,12 +47,15 @@ void KS_List::generate()
 
 void  KS_List::clear()
 {
-  for (int i = 0; i < size; ++i)
-    delete Data[i];
-
-  delete [] Data;
-
-  Data = NULL;
+  if( getsize() != 0)
+  {
+    for (int i = 0; i < size; ++i)
+      delete Data[i];
+    
+    delete [] Data;
+    
+    Data = NULL;
+  }
 
   size = 0;
 }

@@ -40,6 +40,14 @@ int main ()
     resultv = bruteforceKS(L_working, MAXW);
     t = clock() - t;
     fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    
+    //DYNAMIC APPROACH
+    cout << "DYNAMIC TEST: \t" << i << endl;
+    t = clock();
+    resultv = DP_KNAPSACK(L_working, MAXW);
+    t = clock() - t;
+    fout << "\"DYNAMIC\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+
   }
 
   fout.close();

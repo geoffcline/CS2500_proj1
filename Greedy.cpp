@@ -11,6 +11,7 @@ int GreedyKS(const KS_List& A, const int maxw)
   
   int j = 0;
   
+  cout << "quicksort start" << endl;
   QuickSortP(W);
   cout << "quicksort done" << endl;
   

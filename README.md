@@ -17,4 +17,6 @@ Compile: `fg++ *.cpp -std=c++11`
 
 Run: `./a.out`
 
-Valgrind: `valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ./a.out`
+Valgrind: 
+
+`valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ./a.out`

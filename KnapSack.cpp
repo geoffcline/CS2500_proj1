@@ -5,7 +5,7 @@ bool KS_Item::operator< (const KS_Item& rhs) const
 {
   float LHS_ratio = getvalue() / static_cast<float>(getweight());
   float RHS_ratio = rhs.getvalue() / static_cast<float>(rhs.getweight());
-
+  
   return LHS_ratio < RHS_ratio;
 }
 
@@ -28,21 +28,19 @@ void KS_List::generate(const int newsz)
   
   size = newsz;
   
-  generate();
+  default_random_engine generator;
+  normal_distribution<float> gauss(getmu(),getsigma());
+  
+  Data = new KS_Item*[getsize()];
+  
+  for (int i = 0; i < getsize(); ++i)
+    Data[i] = new KS_Item(static_cast<int>(gauss(generator)), static_cast<int>(gauss(generator)));
   
 }
 
 void KS_List::generate()
 {
-  
-  default_random_engine generator;
-  normal_distribution<float> gauss(getmu(),getsigma());
-
-  Data = new KS_Item*[getsize()];
-
-  for (int i = 0; i < getsize(); ++i)
-    Data[i] = new KS_Item(static_cast<int>(gauss(generator)), static_cast<int>(gauss(generator)));
-
+  generate(getsize());
 }
 
 void  KS_List::clear()
@@ -56,7 +54,7 @@ void  KS_List::clear()
     
     Data = NULL;
   }
-
+  
   size = 0;
 }
 
@@ -65,9 +63,9 @@ const KS_List& KS_List::operator= (const KS_List& rhs)
   size = rhs.getsize();
   mu = rhs.getmu();
   sigma = rhs.getsigma();
-
+  
   Data = new KS_Item*[size];
-
+  
   for (int i = 0; i < size; ++i)
     Data[i] = new KS_Item(*(rhs[i]));
   

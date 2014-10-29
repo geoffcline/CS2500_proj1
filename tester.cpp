@@ -28,8 +28,9 @@ int main ()
 
   for (int i = 0; i < TESTS; ++i)
   {
-    cout << "GREEDY TEST: " << i << endl;
+    cout << "GREEDY TEST: \t" << i << endl;
     L_working.generate();
+    cout << "GENERATE DONE: \t" << i << endl;
     t = clock();
     resultv = GreedyKS(L_working, maxw);
     t = clock() - t;

@@ -30,9 +30,9 @@ int main ()
   {
     cout << "GREEDY TEST: \t" << i << endl;
     L_working.generate();
-    cout << "GENERATE DONE: \t" << i << endl;
     t = clock();
     resultv = GreedyKS(L_working, maxw);
+    cout << "GREEDY DONE: \t" << i << endl;
     t = clock() - t;
     fout << "\"GREEDY\",\"" << i << "\",\""
          << t

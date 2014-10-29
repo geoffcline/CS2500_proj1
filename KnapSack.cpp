@@ -22,6 +22,16 @@ const KS_Item& KS_Item::operator= (const KS_Item& rhs)
   return *this;
 }
 
+void KS_List::generate(const int newsz)
+{
+  clear();
+  
+  size = newsz;
+  
+  generate();
+  
+}
+
 void KS_List::generate()
 {
   
@@ -30,7 +40,7 @@ void KS_List::generate()
 
   Data = new KS_Item*[getsize()];
 
-  for (int i = 0; i < size; ++i)
+  for (int i = 0; i < getsize(); ++i)
     Data[i] = new KS_Item(gauss(generator), gauss(generator));
 
 }

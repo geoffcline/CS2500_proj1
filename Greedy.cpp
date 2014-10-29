@@ -30,12 +30,6 @@ void swap(T lhs, T rhs)
   rhs = hold;
 }
 
-
-void QuickSortP(KS_List& work)
-{
-  QuickSortP(work.Data, 0, work.getsize());
-}
-
 template <typename T>
 int PivotP(T** A, int start, int end)
 {
@@ -54,6 +48,11 @@ int PivotP(T** A, int start, int end)
   swap(A[p], A[start]);
   
   return p;
+}
+
+void QuickSortP(KS_List& work)
+{
+  QuickSortP(work.Data, 0, work.getsize());
 }
 
 template <typename T>

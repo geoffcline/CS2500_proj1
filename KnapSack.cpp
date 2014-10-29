@@ -28,21 +28,19 @@ void KS_List::generate(const int newsz)
   
   size = newsz;
   
-  generate();
+  default_random_engine generator;
+  normal_distribution<float> gauss(getmu(),getsigma());
+  
+  Data = new KS_Item*[getsize()];
+  
+  for (int i = 0; i < getsize(); ++i)
+    Data[i] = new KS_Item(static_cast<int>(gauss(generator)), static_cast<int>(gauss(generator)));
   
 }
 
 void KS_List::generate()
 {
-  
-  default_random_engine generator;
-  normal_distribution<float> gauss(getmu(),getsigma());
-
-  Data = new KS_Item*[getsize()];
-
-  for (int i = 0; i < getsize(); ++i)
-    Data[i] = new KS_Item(static_cast<int>(gauss(generator)), static_cast<int>(gauss(generator)));
-
+  generate(getsize());
 }
 
 void  KS_List::clear()

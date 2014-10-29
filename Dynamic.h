@@ -3,6 +3,11 @@
 //Dynamic Programming
 //Header File
 
+#ifndef DYNAMIC_H
+#define DYNAMIC_H
+
 #include "KnapSack.h"
 
 int DP_KNAPSACK(const KS_List& A, const int maxw);
+
+#endif

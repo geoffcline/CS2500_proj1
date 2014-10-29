@@ -13,8 +13,4 @@ void QuickSortP(KS_List& work);
 template <typename T>
 void QuickSortP(T** work, const int start, const int end);
 
-
-
-
-
 #endif 

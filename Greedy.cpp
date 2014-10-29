@@ -9,20 +9,29 @@ int GreedyKS(const KS_List& A, const int maxw)
   int P_wgt = 0;
   int P_vl = 0;
   
-  int j = 0;
+  int j;
   
   cout << "quicksort start" << endl;
   QuickSortP(W);
   cout << "quicksort done" << endl;
   
-  while(P_wgt + W[j] -> getweight() <= maxw && j < W.getsize())
+  for (j=0; j < W.getsize(); j++)
   {
-    P_wgt += W[j] -> getweight();
-    P_vl += W[j] -> getvalue();
-    j++;
+    cout << "weight " <<  j << ": " << W[j] -> getweight() << endl;
+    
+    if((P_wgt + W[j] -> getweight()) <= maxw)
+    {
+      
+      P_wgt += W[j] -> getweight();
+      P_vl += W[j] -> getvalue();
+      j++;
+      cout << "added item" << endl;
+    }
   }
   
-  return P_wgt;
+  cout << "final value: " << P_vl << endl;
+  
+  return P_vl;
 }
 
 template <typename T>

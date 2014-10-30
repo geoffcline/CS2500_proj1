@@ -35,7 +35,8 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 		for (int j = 0; j < maxw; j++)
 		{
 			currentW = A[i] -> getweight();
-			currentV = A[i] -> getvalue();
+            currentV = A[i] -> getvalue();
+            
 			if ( (currentW <= j) && ( (currentV + sackValues[j-currentW][i-1]) > sackValues[j][i-1] ) )
 			{
 				sackValues[j][i] = currentV + sackValues[j-currentW][i-1];
@@ -56,6 +57,6 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 	delete [] sackValues;
 
 	
-	return sackValues[maxw][sizeOfList];
+	return sackValues[maxw-1][sizeOfList-1];
 
 }

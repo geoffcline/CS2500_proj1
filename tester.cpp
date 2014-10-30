@@ -19,7 +19,7 @@ int main ()
   const int   INPUTINCREMENT = 100;
   const int   INITIALINPUTSIZE = 100;
   const int   INTIALSIGMA = 5;
-  const int   BRUTETHRESHOLD = 300;
+  const int   BRUTETHRESHOLD = 99;
   
   clock_t t;
   ofstream fout;
@@ -78,7 +78,7 @@ int main ()
 
     
     //BRUTE FORCE
-    if(i<BRUTETHRESHOLD)
+    if(L_working.getsize() < BRUTETHRESHOLD)
     {  
       cout << "BRUTE TEST: \t" << i << endl;
       t = clock();
@@ -147,7 +147,7 @@ int main ()
 
     
     //BRUTE FORCE
-    if(i<BRUTETHRESHOLD)
+    if(L_working.getsize() < BRUTETHRESHOLD)
     {  
       cout << "BRUTE TEST: \t" << i << endl;
       t = clock();
@@ -216,7 +216,7 @@ int main ()
 
     
     //BRUTE FORCE
-    if(i<BRUTETHRESHOLD)
+    if(L_working.getsize() < BRUTETHRESHOLD)
     {  
       cout << "BRUTE TEST: \t" << i << endl;
       t = clock();
@@ -285,7 +285,7 @@ int main ()
 
     
     //BRUTE FORCE
-    if(i<BRUTETHRESHOLD)
+    if(L_working.getsize() < BRUTETHRESHOLD)
     {  
       cout << "BRUTE TEST: \t" << i << endl;
       t = clock();

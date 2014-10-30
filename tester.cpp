@@ -51,7 +51,7 @@ int main ()
     t = clock();
     resultv = GreedyKS(L_working, MAXW);
     t = clock() - t;
-    fout << "\"GREEDY 1\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    fout << "\"GREEDY 1\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\",\"" << L_working.getweights() << "\"" << endl;
     
     totalclockGreedy+=t;
     totalresultGreedy+=resultv;
@@ -79,7 +79,7 @@ int main ()
     t = clock();
     resultv = DP_KNAPSACK(L_working, MAXW);
     t = clock() - t;
-    fout << "\"DYNAMIC 1\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    fout << "\"DYNAMIC 1\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\",\"" << L_working.getweights() << "\"" << endl;
     
     totalclockDynamic+=t;
     totalresultDynamic+=resultv;

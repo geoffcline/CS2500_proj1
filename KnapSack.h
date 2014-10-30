@@ -33,8 +33,8 @@ private:
   int size;
   float mu;
   float sigma;
+  void  setsize (const int s) {size = s; generate();}
 public:
-  void  setsize (const int s) {size = s;}
   int   getsize () const {return size;}
   void  setmu   (const float m) {mu = m;}
   float getmu   () const {return mu;}

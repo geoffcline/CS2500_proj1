@@ -8,6 +8,7 @@ int GreedyKS(const KS_List& A, const int maxw)
   
   int P_wgt = 0;
   int P_vl = 0;
+  int P_ct = 0;
   
   int j;
   
@@ -16,13 +17,18 @@ int GreedyKS(const KS_List& A, const int maxw)
   for (j=0; j < W.getsize(); j++)
   {
     
-    if((P_wgt + W[j] -> getweight()) <= maxw)
+    if((P_wgt + (W[j] -> getweight())) <= maxw)
     {
       
       P_wgt += W[j] -> getweight();
       P_vl += W[j] -> getvalue();
+      P_ct++;
     }
   }
+  
+  cout << "GREEDY WEIGHT: " << P_wgt << "\tMAX WEIGHT: " << maxw << endl;
+  cout << "GREEDY SIZE: " << P_ct << "\tMAX SIZE: " << W.getsize() << endl;
+  
   
   
   return P_vl;

@@ -1,9 +1,14 @@
 #include "KnapSack.h"
 #include "Greedy.h"
 #include <iostream>
+#include <fstream>
 
 int GreedyKS(const KS_List& A, const int maxw)
 {
+  ofstream fout;
+  
+  fout.open("greedy.txt");
+  
   KS_List W = A;
   
   int P_wgt = 0;
@@ -20,6 +25,7 @@ int GreedyKS(const KS_List& A, const int maxw)
     if((P_wgt + (W[j] -> getweight())) <= maxw)
     {
       
+      fout << W[j];
       P_wgt += W[j] -> getweight();
       P_vl += W[j] -> getvalue();
       P_ct++;

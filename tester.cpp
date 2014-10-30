@@ -17,6 +17,9 @@ int main ()
   const int   MAXW = 5000;
   const int   SIGMAINCREMENT = 5;
   const int   INPUTINCREMENT = 100;
+  const int   INITIALINPUTSIZE = 100;
+  const int   INTIALSIGMA = 5;
+  const int   BRUTETHRESHOLD = 300;
   
   clock_t t;
   ofstream fout;
@@ -33,11 +36,13 @@ int main ()
   fout << "\"C/S\",\"" << CLOCKS_PER_SEC << "\"" << endl;
   
   KS_List L_working(SIGMA, MU, SIZE);
+  
+  L_working.generate(INITIALINPUTSIZE);
 
   for (int i = 0; i < DATAPOINTS*NUMPERPOINT; ++i) //denpendant->execution independant->inputsize
   {
-     
-    if(i%NUMPERPOINT==0 && i != 0)
+    
+    if(i%NUMPERPOINT==0 && i!=0)
     {
       L_working.generate(L_working.getsize() + INPUTINCREMENT);
   
@@ -73,15 +78,21 @@ int main ()
 
     
     //BRUTE FORCE
-    cout << "BRUTE TEST: \t" << i << endl;
-    cout << "BRUTE SIZE: " << L_working.getsize() << endl;
-    t = clock();
-    //resultv = bruteforceKS(L_working, MAXW);
-    t = clock() - t;
-    fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
-
-    totalclockBrute+=t;
-    totalresultBrute+=resultv;    
+    if(i<BRUTETHRESHOLD)
+    {  
+      cout << "BRUTE TEST: \t" << i << endl;
+      t = clock();
+      resultv = bruteforceKS(L_working, MAXW);
+      t = clock() - t;
+      fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+      totalclockBrute+=t;
+      totalresultBrute+=resultv;
+    }
+    else
+    {
+      cout << "BRUTE TEST: \t" << i << endl;
+      fout << "\"BRUTE\",\"" << "\"Input too large\",\"" << endl;
+    }
     
     //DYNAMIC APPROACH
     cout << "DYNAMIC TEST: \t" << i << endl;
@@ -94,10 +105,12 @@ int main ()
     totalresultDynamic+=resultv;
 
   }
+ 
+  L_working.setsigma(INTIALSIGMA);
 
   for (int i = 0; i < DATAPOINTS*NUMPERPOINT; ++i) //denpendant->execution independant->variance
   {
-     
+    
     if(i%NUMPERPOINT==0 && i != 0)
     {
       L_working.setsigma(L_working.getsigma()+SIGMAINCREMENT);
@@ -134,14 +147,22 @@ int main ()
 
     
     //BRUTE FORCE
-    cout << "BRUTE TEST: \t" << i << endl;
-    t = clock();
-    //resultv = bruteforceKS(L_working, MAXW);
-    t = clock() - t;
-    fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    if(i<BRUTETHRESHOLD)
+    {  
+      cout << "BRUTE TEST: \t" << i << endl;
+      t = clock();
+      resultv = bruteforceKS(L_working, MAXW);
+      t = clock() - t;
+      fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
 
-    totalclockBrute+=t;
-    totalresultBrute+=resultv;    
+      totalclockBrute+=t;
+      totalresultBrute+=resultv;
+    }
+    else
+    {
+      cout << "BRUTE TEST: \t" << i << endl;
+      fout << "\"BRUTE\",\"" << "\"Input too large\",\"" << endl;
+    }
     
     //DYNAMIC APPROACH
     cout << "DYNAMIC TEST: \t" << i << endl;
@@ -154,10 +175,12 @@ int main ()
     totalresultDynamic+=resultv;
   }
 
+  L_working.generate(INITIALINPUTSIZE);
+
   for (int i = 0; i < DATAPOINTS*NUMPERPOINT; ++i) //denpendant->value independant->inputsize
   {
-     
-    if(i%NUMPERPOINT==0 && i != 0)
+    
+    if(i%NUMPERPOINT==0 && i!=0)
     {
       L_working.generate(L_working.getsize() + INPUTINCREMENT);
   
@@ -193,14 +216,22 @@ int main ()
 
     
     //BRUTE FORCE
-    cout << "BRUTE TEST: \t" << i << endl;
-    t = clock();
-    //resultv = bruteforceKS(L_working, MAXW);
-    t = clock() - t;
-    fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    if(i<BRUTETHRESHOLD)
+    {  
+      cout << "BRUTE TEST: \t" << i << endl;
+      t = clock();
+      resultv = bruteforceKS(L_working, MAXW);
+      t = clock() - t;
+      fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
 
-    totalclockBrute+=t;
-    totalresultBrute+=resultv;    
+      totalclockBrute+=t;
+      totalresultBrute+=resultv;
+    }
+    else
+    {
+      cout << "BRUTE TEST: \t" << i << endl;
+      fout << "\"BRUTE\",\"" << "\"Input too large\",\"" << endl;
+    }    
     
     //DYNAMIC APPROACH
     cout << "DYNAMIC TEST: \t" << i << endl;
@@ -213,10 +244,12 @@ int main ()
     totalresultDynamic+=resultv;
   }
 
+  L_working.setsigma(INTIALSIGMA);
+ 
   for (int i = 0; i < DATAPOINTS*NUMPERPOINT; ++i) //denpendant->value independant->variance
   {
      
-    if(i%NUMPERPOINT==0)
+    if(i%NUMPERPOINT==0 && i!=0)
     {
       L_working.setsigma(L_working.getsigma()+SIGMAINCREMENT);
   
@@ -252,14 +285,22 @@ int main ()
 
     
     //BRUTE FORCE
-    cout << "BRUTE TEST: \t" << i << endl;
-    t = clock();
-    //resultv = bruteforceKS(L_working, MAXW);
-    t = clock() - t;
-    fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    if(i<BRUTETHRESHOLD)
+    {  
+      cout << "BRUTE TEST: \t" << i << endl;
+      t = clock();
+      resultv = bruteforceKS(L_working, MAXW);
+      t = clock() - t;
+      fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
 
-    totalclockBrute+=t;
-    totalresultBrute+=resultv;    
+      totalclockBrute+=t;
+      totalresultBrute+=resultv;
+    }
+    else
+    {
+      cout << "BRUTE TEST: \t" << i << endl;
+      fout << "\"BRUTE\",\"" << "\"Input too large\",\"" << endl;
+    }   
     
     //DYNAMIC APPROACH
     cout << "DYNAMIC TEST: \t" << i << endl;

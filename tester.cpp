@@ -11,10 +11,10 @@ int main ()
 {
   const float SIGMA = 10;
   const float MU = 100;
-  const int   SIZE = 5;
+  const int   SIZE = 10;
   const int   DATAPOINTS=1;
   const int   NUMPERPOINT=1;
-  const int   MAXW = 300;
+  const int   MAXW = 800;
   const int   SIGMAINCREMENT = 0;
   const int   INPUTINCREMENT = 0;
   const int   INITIALINPUTSIZE = 5;
@@ -31,6 +31,7 @@ int main ()
   int totalclockGreedy=0;
   int totalclockDynamic=0;
   int totalclockBrute=0;
+  int i =0;
   
   fout.open("result.csv");
   fout << "\"C/S\",\"" << CLOCKS_PER_SEC << "\"" << endl;
@@ -38,9 +39,11 @@ int main ()
   KS_List L_working(SIGMA, MU, SIZE);
   
   //L_working.generate(INITIALINPUTSIZE);
+  
 
    cout << "GREEDY TEST: \t" << i << endl;
     L_working.generate();
+    cout << L_working << endl;
     t = clock();
     resultv = GreedyKS(L_working, MAXW);
     t = clock() - t;

@@ -14,6 +14,7 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 	int currentW = 0;
 	int currentV = 0;
 	int sizeOfList = A.getsize();
+	int final = 0;
 	
 //Creates a 2D Dynamic Array to store the Values with sizeOfList and maxw
 	int **sackValues;
@@ -48,7 +49,7 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 		}
 	}
 	
-  int final = sackValues[maxw-1][sizeOfList-1];
+	final = sackValues[maxw-1][sizeOfList-1];
   
 //Delete 2D Dynamic Array
 	for (int i = 0; i < maxw; i++)

@@ -14,7 +14,7 @@ int bruteforceKS(const KS_List& item, const int maxw)
   KS_Item** solution = new KS_Item*[n];
   
   for (int i = 0; i < n; i++) {
-    solution[i] = nullptr;
+    solution[i] = 0;
   }
 
   int A[n]; //array of binary values to create all combos
@@ -25,6 +25,7 @@ int bruteforceKS(const KS_List& item, const int maxw)
   }
 
   int j = 0; //used for making all combos
+  int m = 0; //move through solution array
   int currentWeight=0; //used to keep track of weight in currentChoice
   int currentValue=0;  //same for above except for value
   int bestValue=0;     //keeps track of max value obtained by a combo of items
@@ -58,13 +59,29 @@ int bruteforceKS(const KS_List& item, const int maxw)
     {
       bestValue = currentValue;
       bestWeight = currentWeight;
+      for (int i = 0; i < n; i++) {
+        solution[i] = 0;
+      }
+      m = 0;
+      for(int k =1; k<n;k++) //creates combo out of items and keeps track of weight and value
+      {
+        if(A[k] == 1)
+        {
+          solution[m++] = item[k];
+        }
+      }
     }
      
     
 
   }
   
-  cout << "BRUTE WEIGHT: " << bestWeight << "\tMAX WEIGHT: " << maxw << endl;
+  m=0;
+  while(solution[m] != 0 && m<n)
+  {
+    fout << solution[m];
+    m++;
+  }
 
   return bestValue; //returns max set
 

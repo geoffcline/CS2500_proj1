@@ -10,13 +10,13 @@ using namespace std;
 int main ()
 {
   const float SIGMA = 10;
-  const float MU = 50;
-  const int   SIZE = 300;
-  const int   DATAPOINTS=10;
-  const int   NUMPERPOINT=15;
-  const int   MAXW = 250;
-  const int   SIGMAINCREMENT = 5;
-  const int   INPUTINCREMENT = 2;
+  const float MU = 100;
+  const int   SIZE = 5;
+  const int   DATAPOINTS=1;
+  const int   NUMPERPOINT=1;
+  const int   MAXW = 300;
+  const int   SIGMAINCREMENT = 0;
+  const int   INPUTINCREMENT = 0;
   const int   INITIALINPUTSIZE = 5;
   const int   INTIALSIGMA = 5;
   const int   BRUTETHRESHOLD = 20;

@@ -16,10 +16,10 @@ int main ()
   const int   NUMPERPOINT=15;
   const int   MAXW = 5000;
   const int   SIGMAINCREMENT = 5;
-  const int   INPUTINCREMENT = 100;
-  const int   INITIALINPUTSIZE = 100;
+  const int   INPUTINCREMENT = 2;
+  const int   INITIALINPUTSIZE = 5;
   const int   INTIALSIGMA = 5;
-  const int   BRUTETHRESHOLD = 99;
+  const int   BRUTETHRESHOLD = 20;
   
   clock_t t;
   ofstream fout;

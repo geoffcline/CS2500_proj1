@@ -11,7 +11,7 @@ int main ()
 {
   const float SIGMA = 10;
   const float MU = 50;
-  const int   SIZE = 300;
+  const int   SIZE = 30;
   const int   DATAPOINTS=10;
   const int   NUMPERPOINT=15;
   const int   MAXW = 5000;

@@ -14,7 +14,7 @@ int main ()
   const int   SIZE = 300;
   const int   DATAPOINTS=10;
   const int   NUMPERPOINT=15;
-  const int   MAXW = 5000;
+  const int   MAXW = 250;
   const int   SIGMAINCREMENT = 5;
   const int   INPUTINCREMENT = 2;
   const int   INITIALINPUTSIZE = 5;

@@ -5,7 +5,7 @@ int bruteforceKS(const KS_List& item, const int maxw)
 {
   int n = item.getsize(); //used multiple times so variable for total amount of items
 
-  int A[n]; //array of binary values to create all combos
+  int* A = new int [n];
 
   for(int x=0;x<item.getsize();x++) //sets all elements to 0
   {

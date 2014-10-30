@@ -91,7 +91,7 @@ int main ()
     else
     {
       cout << "BRUTE SKIP: \t" << i << endl;
-      fout << "\"BRUTE\",\"" << "\"Input too large\"" << endl;
+      fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
     }
     
     //DYNAMIC APPROACH
@@ -161,7 +161,7 @@ int main ()
     else
     {
       cout << "BRUTE SKIP: \t" << i << endl;
-      fout << "\"BRUTE\",\"" << "\"Input too large\"" << endl;
+      fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
     }
     
     //DYNAMIC APPROACH
@@ -230,7 +230,7 @@ int main ()
     else
     {
       cout << "BRUTE SKIP: \t" << i << endl;
-      fout << "\"BRUTE\",\"" << "\"Input too large\"" << endl;
+      fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
     }    
     
     //DYNAMIC APPROACH
@@ -299,7 +299,7 @@ int main ()
     else
     {
       cout << "BRUTE SKIP: \t" << i << endl;
-      fout << "\"BRUTE\",\"" << "\"Input too large\"" << endl;
+      fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
     }   
     
     //DYNAMIC APPROACH

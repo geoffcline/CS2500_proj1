@@ -48,6 +48,8 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 		}
 	}
 	
+  int final = sackValues[maxw-1][sizeOfList-1];
+  
 //Delete 2D Dynamic Array
 	for (int i = 0; i < maxw; i++)
 	{
@@ -57,6 +59,6 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 	delete [] sackValues;
 
 	
-	return sackValues[maxw-1][sizeOfList-1];
+	return final;
 
 }

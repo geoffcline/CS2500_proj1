@@ -79,7 +79,7 @@ int bruteforceKS(const KS_List& item, const int maxw)
   m=0;
   while(solution[m] != 0 && m<n)
   {
-    fout << solution[m];
+    fout << *solution[m] << endl;
     m++;
   }
 

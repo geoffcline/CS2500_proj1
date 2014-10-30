@@ -84,7 +84,7 @@ ostream& operator << (ostream& out, const KS_List& list)
 {
   for (int i = 0; i < list.getsize(); i++)
   {
-    out << list[i];
+    out << *list[i] << endl;
   }
   
   return out;

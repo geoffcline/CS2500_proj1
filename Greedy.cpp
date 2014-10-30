@@ -33,7 +33,6 @@ int GreedyKS(const KS_List& A, const int maxw)
     if((P_wgt + (W[j] -> getweight())) <= maxw)
     {
       
-      fout << W[j];
       P_wgt += W[j] -> getweight();
       P_vl += W[j] -> getvalue();
       P_ct++;
@@ -45,7 +44,7 @@ int GreedyKS(const KS_List& A, const int maxw)
   
   while(solution[k] != 0 && m < A.getsize())
   {
-    fout << solution[k];
+    fout << *solution[k] << endl;
     k++;
   }
   

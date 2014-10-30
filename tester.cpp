@@ -12,13 +12,13 @@ int main ()
   const float SIGMA = 10;
   const float MU = 100;
   const int   SIZE = 10;
-  const int   DATAPOINTS=1;
-  const int   NUMPERPOINT=1;
+  //const int   DATAPOINTS=1;
+  //const int   NUMPERPOINT=1;
   const int   MAXW = 800;
-  const int   SIGMAINCREMENT = 0;
-  const int   INPUTINCREMENT = 0;
-  const int   INITIALINPUTSIZE = 5;
-  const int   INTIALSIGMA = 5;
+  //const int   SIGMAINCREMENT = 0;
+  //const int   INPUTINCREMENT = 0;
+  //const int   INITIALINPUTSIZE = 5;
+  //const int   INTIALSIGMA = 5;
   const int   BRUTETHRESHOLD = 20;
   
   clock_t t;
@@ -26,10 +26,10 @@ int main ()
   
   int resultv;
   int totalresultGreedy=0;
-  int totalresultDynamic=0;
+  //int totalresultDynamic=0;
   int totalresultBrute=0;
   int totalclockGreedy=0;
-  int totalclockDynamic=0;
+  //int totalclockDynamic=0;
   int totalclockBrute=0;
   int i =0;
   

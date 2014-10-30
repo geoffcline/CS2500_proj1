@@ -31,6 +31,7 @@ int main ()
   int totalclockGreedy=0;
   int totalclockDynamic=0;
   int totalclockBrute=0;
+  int brutetooLarge=0;
   
   fout.open("result.csv");
   fout << "\"C/S\",\"" << CLOCKS_PER_SEC << "\"" << endl;
@@ -42,36 +43,15 @@ int main ()
   for (int i = 0; i < DATAPOINTS*NUMPERPOINT; ++i) //denpendant->execution independant->inputsize
   {
     
-    if(i%NUMPERPOINT==0 && i!=0)
-    {
-      L_working.generate(L_working.getsize() + INPUTINCREMENT);
-  
-      totalclockGreedy  = totalclockGreedy/NUMPERPOINT;
-      totalresultGreedy = totalresultGreedy/NUMPERPOINT;
-      totalclockBrute   = totalclockBrute/NUMPERPOINT;
-      totalresultBrute  = totalresultBrute/NUMPERPOINT;
-      totalclockDynamic = totalclockDynamic/NUMPERPOINT;
-      totalresultDynamic= totalresultDynamic/NUMPERPOINT;
 
-      fout << "\"GREEDY DATA POINT\",\"" << i << "\",\"" << totalclockGreedy << "\",\"" << totalresultGreedy << "\"" << endl;
-      fout << "\"BRUTE DATA POINT\",\"" << i << "\",\"" << totalclockBrute << "\",\"" << totalresultBrute << "\"" << endl;
-      fout << "\"DYNAMIC DATA POINT\",\"" << i << "\",\"" << totalclockDynamic << "\",\"" << totalresultDynamic << "\"" << endl;
-      
-      totalclockGreedy  = 0;
-      totalresultGreedy = 0;
-      totalclockBrute   = 0;
-      totalresultBrute  = 0;
-      totalclockDynamic = 0;
-      totalresultDynamic= 0;
-    }
 
     //GREEDY APPROACH
-    cout << "GREEDY TEST: \t" << i << endl;
+    cout << "GREEDY TEST 1: \t" << i << endl;
     L_working.generate();
     t = clock();
     resultv = GreedyKS(L_working, MAXW);
     t = clock() - t;
-    fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    fout << "\"GREEDY 1\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
     
     totalclockGreedy+=t;
     totalresultGreedy+=resultv;
@@ -80,29 +60,55 @@ int main ()
     //BRUTE FORCE
     if(L_working.getsize() < BRUTETHRESHOLD)
     {  
-      cout << "BRUTE TEST: \t" << i << endl;
+      cout << "BRUTE TEST 1: \t" << i << endl;
       t = clock();
       resultv = bruteforceKS(L_working, MAXW);
       t = clock() - t;
-      fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+      fout << "\"BRUTE 1\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
       totalclockBrute+=t;
       totalresultBrute+=resultv;
     }
     else
     {
       cout << "BRUTE SKIP: \t" << i << endl;
-      fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
+      fout << "\"BRUTE 1\",\"" << i << "\",\"Input too large\"" << endl;
+      brutetooLarge++;
     }
     
     //DYNAMIC APPROACH
-    cout << "DYNAMIC TEST: \t" << i << endl;
+    cout << "DYNAMIC TEST 1: \t" << i << endl;
     t = clock();
     resultv = DP_KNAPSACK(L_working, MAXW);
     t = clock() - t;
-    fout << "\"DYNAMIC\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    fout << "\"DYNAMIC 1\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
     
     totalclockDynamic+=t;
     totalresultDynamic+=resultv;
+
+    
+    if(i%NUMPERPOINT==0 && i!=0)
+    {
+      L_working.generate(L_working.getsize() + INPUTINCREMENT);
+  
+      totalclockGreedy  = totalclockGreedy/NUMPERPOINT;
+      totalresultGreedy = totalresultGreedy/NUMPERPOINT;
+      totalclockBrute   = totalclockBrute/(NUMPERPOINT- brutetooLarge);
+      totalresultBrute  = totalresultBrute/(NUMPERPOINT- brutetooLarge);
+      totalclockDynamic = totalclockDynamic/NUMPERPOINT;
+      totalresultDynamic= totalresultDynamic/NUMPERPOINT;
+
+      fout << "\"GREEDY DATA POINT 1\",\"" << i << "\",\"" << totalclockGreedy << "\",\"" << totalresultGreedy << "\"" << endl;
+      fout << "\"BRUTE DATA POINT 1\",\"" << i << "\",\"" << totalclockBrute << "\",\"" << totalresultBrute << "\"" << endl;
+      fout << "\"DYNAMIC DATA POINT 1\",\"" << i << "\",\"" << totalclockDynamic << "\",\"" << totalresultDynamic << "\"" << endl;
+      
+      totalclockGreedy  = 0;
+      totalresultGreedy = 0;
+      totalclockBrute   = 0;
+      totalresultBrute  = 0;
+      totalclockDynamic = 0;
+      totalresultDynamic= 0;
+      brutetooLarge     = 0;
+    }
 
   }
  
@@ -111,36 +117,15 @@ int main ()
   for (int i = 0; i < DATAPOINTS*NUMPERPOINT; ++i) //denpendant->execution independant->variance
   {
     
-    if(i%NUMPERPOINT==0 && i != 0)
-    {
-      L_working.setsigma(L_working.getsigma()+SIGMAINCREMENT);
-  
-      totalclockGreedy  = totalclockGreedy/NUMPERPOINT;
-      totalresultGreedy = totalresultGreedy/NUMPERPOINT;
-      totalclockBrute   = totalclockBrute/NUMPERPOINT;
-      totalresultBrute  = totalresultBrute/NUMPERPOINT;
-      totalclockDynamic = totalclockDynamic/NUMPERPOINT;
-      totalresultDynamic= totalresultDynamic/NUMPERPOINT;
 
-      fout << "\"GREEDY DATA POINT\",\"" << i << "\",\"" << totalclockGreedy << "\",\"" << totalresultGreedy << "\"" << endl;
-      fout << "\"BRUTE DATA POINT\",\"" << i << "\",\"" << totalclockBrute << "\",\"" << totalresultBrute << "\"" << endl;
-      fout << "\"DYNAMIC DATA POINT\",\"" << i << "\",\"" << totalclockDynamic << "\",\"" << totalresultDynamic << "\"" << endl;
-      
-      totalclockGreedy  = 0;
-      totalresultGreedy = 0;
-      totalclockBrute   = 0;
-      totalresultBrute  = 0;
-      totalclockDynamic = 0;
-      totalresultDynamic= 0;
-    }
 
     //GREEDY APPROACH
-    cout << "GREEDY TEST: \t" << i << endl;
+    cout << "GREEDY TEST 2: \t" << i << endl;
     L_working.generate();
     t = clock();
     resultv = GreedyKS(L_working, MAXW);
     t = clock() - t;
-    fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    fout << "\"GREEDY 2\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
     
     totalclockGreedy+=t;
     totalresultGreedy+=resultv;
@@ -149,11 +134,11 @@ int main ()
     //BRUTE FORCE
     if(L_working.getsize() < BRUTETHRESHOLD)
     {  
-      cout << "BRUTE TEST: \t" << i << endl;
+      cout << "BRUTE TEST 2: \t" << i << endl;
       t = clock();
       resultv = bruteforceKS(L_working, MAXW);
       t = clock() - t;
-      fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+      fout << "\"BRUTE 2\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
 
       totalclockBrute+=t;
       totalresultBrute+=resultv;
@@ -162,10 +147,11 @@ int main ()
     {
       cout << "BRUTE SKIP: \t" << i << endl;
       fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
+      brutetooLarge++;
     }
     
     //DYNAMIC APPROACH
-    cout << "DYNAMIC TEST: \t" << i << endl;
+    cout << "DYNAMIC TEST 2: \t" << i << endl;
     t = clock();
     resultv = DP_KNAPSACK(L_working, MAXW);
     t = clock() - t;
@@ -173,6 +159,32 @@ int main ()
     
     totalclockDynamic+=t;
     totalresultDynamic+=resultv;
+
+    if(i%NUMPERPOINT==0 && i != 0)
+    {
+      L_working.setsigma(L_working.getsigma()+SIGMAINCREMENT);
+  
+      totalclockGreedy  = totalclockGreedy/NUMPERPOINT;
+      totalresultGreedy = totalresultGreedy/NUMPERPOINT;
+      totalclockBrute   = totalclockBrute/(NUMPERPOINT- brutetooLarge);
+      totalresultBrute  = totalresultBrute/(NUMPERPOINT- brutetooLarge);
+      totalclockDynamic = totalclockDynamic/NUMPERPOINT;
+      totalresultDynamic= totalresultDynamic/NUMPERPOINT;
+
+      fout << "\"GREEDY DATA POINT 2\",\"" << i << "\",\"" << totalclockGreedy << "\",\"" << totalresultGreedy << "\"" << endl;
+      fout << "\"BRUTE DATA POINT 2\",\"" << i << "\",\"" << totalclockBrute << "\",\"" << totalresultBrute << "\"" << endl;
+      fout << "\"DYNAMIC DATA POINT 2\",\"" << i << "\",\"" << totalclockDynamic << "\",\"" << totalresultDynamic << "\"" << endl;
+      
+      totalclockGreedy  = 0;
+      totalresultGreedy = 0;
+      totalclockBrute   = 0;
+      totalresultBrute  = 0;
+      totalclockDynamic = 0;
+      totalresultDynamic= 0;
+      brutetooLarge     = 0;
+    }
+
+
   }
 
   L_working.generate(INITIALINPUTSIZE);
@@ -180,36 +192,15 @@ int main ()
   for (int i = 0; i < DATAPOINTS*NUMPERPOINT; ++i) //denpendant->value independant->inputsize
   {
     
-    if(i%NUMPERPOINT==0 && i!=0)
-    {
-      L_working.generate(L_working.getsize() + INPUTINCREMENT);
-  
-      totalclockGreedy  = totalclockGreedy/NUMPERPOINT;
-      totalresultGreedy = totalresultGreedy/NUMPERPOINT;
-      totalclockBrute   = totalclockBrute/NUMPERPOINT;
-      totalresultBrute  = totalresultBrute/NUMPERPOINT;
-      totalclockDynamic = totalclockDynamic/NUMPERPOINT;
-      totalresultDynamic= totalresultDynamic/NUMPERPOINT;
 
-      fout << "\"GREEDY DATA POINT\",\"" << i << "\",\"" << totalclockGreedy << "\",\"" << totalresultGreedy << "\"" << endl;
-      fout << "\"BRUTE DATA POINT\",\"" << i << "\",\"" << totalclockBrute << "\",\"" << totalresultBrute << "\"" << endl;
-      fout << "\"DYNAMIC DATA POINT\",\"" << i << "\",\"" << totalclockDynamic << "\",\"" << totalresultDynamic << "\"" << endl;
-      
-      totalclockGreedy  = 0;
-      totalresultGreedy = 0;
-      totalclockBrute   = 0;
-      totalresultBrute  = 0;
-      totalclockDynamic = 0;
-      totalresultDynamic= 0;
-    }
 
     //GREEDY APPROACH
-    cout << "GREEDY TEST: \t" << i << endl;
+    cout << "GREEDY TEST 3: \t" << i << endl;
     L_working.generate();
     t = clock();
     resultv = GreedyKS(L_working, MAXW);
     t = clock() - t;
-    fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    fout << "\"GREEDY 3\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
     
     totalclockGreedy+=t;
     totalresultGreedy+=resultv;
@@ -218,11 +209,11 @@ int main ()
     //BRUTE FORCE
     if(L_working.getsize() < BRUTETHRESHOLD)
     {  
-      cout << "BRUTE TEST: \t" << i << endl;
+      cout << "BRUTE TEST 3: \t" << i << endl;
       t = clock();
       resultv = bruteforceKS(L_working, MAXW);
       t = clock() - t;
-      fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+      fout << "\"BRUTE 3\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
 
       totalclockBrute+=t;
       totalresultBrute+=resultv;
@@ -230,18 +221,44 @@ int main ()
     else
     {
       cout << "BRUTE SKIP: \t" << i << endl;
-      fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
+      fout << "\"BRUTE 3\",\"" << i << "\",\"Input too large\"" << endl;
+      brutetooLarge++;
     }    
     
     //DYNAMIC APPROACH
-    cout << "DYNAMIC TEST: \t" << i << endl;
+    cout << "DYNAMIC TEST 3: \t" << i << endl;
     t = clock();
     resultv = DP_KNAPSACK(L_working, MAXW);
     t = clock() - t;
-    fout << "\"DYNAMIC\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    fout << "\"DYNAMIC 3\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
     
     totalclockDynamic+=t;
     totalresultDynamic+=resultv;
+
+    if(i%NUMPERPOINT==0 && i!=0)
+    {
+      L_working.generate(L_working.getsize() + INPUTINCREMENT);
+  
+      totalclockGreedy  = totalclockGreedy/NUMPERPOINT;
+      totalresultGreedy = totalresultGreedy/NUMPERPOINT;
+      totalclockBrute   = totalclockBrute/(NUMPERPOINT- brutetooLarge);
+      totalresultBrute  = totalresultBrute/(NUMPERPOINT- brutetooLarge);
+      totalclockDynamic = totalclockDynamic/NUMPERPOINT;
+      totalresultDynamic= totalresultDynamic/NUMPERPOINT;
+
+      fout << "\"GREEDY DATA POINT 3\",\"" << i << "\",\"" << totalclockGreedy << "\",\"" << totalresultGreedy << "\"" << endl;
+      fout << "\"BRUTE DATA POINT 3\",\"" << i << "\",\"" << totalclockBrute << "\",\"" << totalresultBrute << "\"" << endl;
+      fout << "\"DYNAMIC DATA POINT 3\",\"" << i << "\",\"" << totalclockDynamic << "\",\"" << totalresultDynamic << "\"" << endl;
+      
+      totalclockGreedy  = 0;
+      totalresultGreedy = 0;
+      totalclockBrute   = 0;
+      totalresultBrute  = 0;
+      totalclockDynamic = 0;
+      totalresultDynamic= 0;
+      brutetooLarge     = 0;
+    }
+
   }
 
   L_working.setsigma(INTIALSIGMA);
@@ -249,36 +266,15 @@ int main ()
   for (int i = 0; i < DATAPOINTS*NUMPERPOINT; ++i) //denpendant->value independant->variance
   {
      
-    if(i%NUMPERPOINT==0 && i!=0)
-    {
-      L_working.setsigma(L_working.getsigma()+SIGMAINCREMENT);
-  
-      totalclockGreedy  = totalclockGreedy/NUMPERPOINT;
-      totalresultGreedy = totalresultGreedy/NUMPERPOINT;
-      totalclockBrute   = totalclockBrute/NUMPERPOINT;
-      totalresultBrute  = totalresultBrute/NUMPERPOINT;
-      totalclockDynamic = totalclockDynamic/NUMPERPOINT;
-      totalresultDynamic= totalresultDynamic/NUMPERPOINT;
 
-      fout << "\"GREEDY DATA POINT\",\"" << i << "\",\"" << totalclockGreedy << "\",\"" << totalresultGreedy << "\"" << endl;
-      fout << "\"BRUTE DATA POINT\",\"" << i << "\",\"" << totalclockBrute << "\",\"" << totalresultBrute << "\"" << endl;
-      fout << "\"DYNAMIC DATA POINT\",\"" << i << "\",\"" << totalclockDynamic << "\",\"" << totalresultDynamic << "\"" << endl;
-      
-      totalclockGreedy  = 0;
-      totalresultGreedy = 0;
-      totalclockBrute   = 0;
-      totalresultBrute  = 0;
-      totalclockDynamic = 0;
-      totalresultDynamic= 0;
-    }
 
     //GREEDY APPROACH
-    cout << "GREEDY TEST: \t" << i << endl;
+    cout << "GREEDY TEST 4: \t" << i << endl;
     L_working.generate();
     t = clock();
     resultv = GreedyKS(L_working, MAXW);
     t = clock() - t;
-    fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    fout << "\"GREEDY 4\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
     
     totalclockGreedy+=t;
     totalresultGreedy+=resultv;
@@ -287,11 +283,11 @@ int main ()
     //BRUTE FORCE
     if(L_working.getsize() < BRUTETHRESHOLD)
     {  
-      cout << "BRUTE TEST: \t" << i << endl;
+      cout << "BRUTE TEST 4: \t" << i << endl;
       t = clock();
       resultv = bruteforceKS(L_working, MAXW);
       t = clock() - t;
-      fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+      fout << "\"BRUTE 4\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
 
       totalclockBrute+=t;
       totalresultBrute+=resultv;
@@ -299,18 +295,43 @@ int main ()
     else
     {
       cout << "BRUTE SKIP: \t" << i << endl;
-      fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
+      fout << "\"BRUTE 4\",\"" << i << "\",\"Input too large\"" << endl;
+      brutetooLarge++;
     }   
     
     //DYNAMIC APPROACH
-    cout << "DYNAMIC TEST: \t" << i << endl;
+    cout << "DYNAMIC TEST 4: \t" << i << endl;
     t = clock();
     resultv = DP_KNAPSACK(L_working, MAXW);
     t = clock() - t;
-    fout << "\"DYNAMIC\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    fout << "\"DYNAMIC 4\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
     
     totalclockDynamic+=t;
     totalresultDynamic+=resultv;
+
+    if(i%NUMPERPOINT==0 && i!=0)
+    {
+      L_working.setsigma(L_working.getsigma()+SIGMAINCREMENT);
+  
+      totalclockGreedy  = totalclockGreedy/NUMPERPOINT;
+      totalresultGreedy = totalresultGreedy/NUMPERPOINT;
+      totalclockBrute   = totalclockBrute/(NUMPERPOINT- brutetooLarge);
+      totalresultBrute  = totalresultBrute/(NUMPERPOINT- brutetooLarge);
+      totalclockDynamic = totalclockDynamic/NUMPERPOINT;
+      totalresultDynamic= totalresultDynamic/NUMPERPOINT;
+
+      fout << "\"GREEDY DATA POINT 4\",\"" << i << "\",\"" << totalclockGreedy << "\",\"" << totalresultGreedy << "\"" << endl;
+      fout << "\"BRUTE DATA POINT 4\",\"" << i << "\",\"" << totalclockBrute << "\",\"" << totalresultBrute << "\"" << endl;
+      fout << "\"DYNAMIC DATA POINT 4\",\"" << i << "\",\"" << totalclockDynamic << "\",\"" << totalresultDynamic << "\"" << endl;
+      
+      totalclockGreedy  = 0;
+      totalresultGreedy = 0;
+      totalclockBrute   = 0;
+      totalresultBrute  = 0;
+      totalclockDynamic = 0;
+      totalresultDynamic= 0;
+      brutetooLarge     = 0;
+    }
   }
 
   fout.close();

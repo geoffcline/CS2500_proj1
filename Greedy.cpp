@@ -27,7 +27,6 @@ int GreedyKS(const KS_List& A, const int maxw)
   }
   
   cout << "GREEDY WEIGHT: " << P_wgt << "\tMAX WEIGHT: " << maxw << endl;
-  cout << "GREEDY SIZE: " << P_ct << "\tMAX SIZE: " << W.getsize() << endl;
   
   
   

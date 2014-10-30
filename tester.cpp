@@ -94,6 +94,7 @@ int main ()
       fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
     }
     
+    /*
     //DYNAMIC APPROACH
     cout << "DYNAMIC TEST: \t" << i << endl;
     t = clock();
@@ -103,6 +104,7 @@ int main ()
     
     totalclockDynamic+=t;
     totalresultDynamic+=resultv;
+    */
 
   }
  
@@ -164,12 +166,14 @@ int main ()
       fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
     }
     
+    /*
     //DYNAMIC APPROACH
     cout << "DYNAMIC TEST: \t" << i << endl;
     t = clock();
     resultv = DP_KNAPSACK(L_working, MAXW);
     t = clock() - t;
     fout << "\"DYNAMIC\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    */
     
     totalclockDynamic+=t;
     totalresultDynamic+=resultv;
@@ -233,6 +237,7 @@ int main ()
       fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
     }    
     
+    /*
     //DYNAMIC APPROACH
     cout << "DYNAMIC TEST: \t" << i << endl;
     t = clock();
@@ -242,6 +247,8 @@ int main ()
     
     totalclockDynamic+=t;
     totalresultDynamic+=resultv;
+     */
+    
   }
 
   L_working.setsigma(INTIALSIGMA);
@@ -302,6 +309,7 @@ int main ()
       fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
     }   
     
+    /*
     //DYNAMIC APPROACH
     cout << "DYNAMIC TEST: \t" << i << endl;
     t = clock();
@@ -311,6 +319,7 @@ int main ()
     
     totalclockDynamic+=t;
     totalresultDynamic+=resultv;
+     */
   }
 
   fout.close();

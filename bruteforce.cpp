@@ -52,6 +52,8 @@ int bruteforceKS(const KS_List& item, const int maxw)
 
 
   }
+  
+  cout << "BRUTE WEIGHT: " << bestWeight << "\tMAX WEIGHT: " << maxw << endl;
 
   return bestValue; //returns max set
 

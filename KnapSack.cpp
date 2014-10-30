@@ -79,3 +79,14 @@ const KS_List& KS_List::operator= (const KS_List& rhs)
   
   return *this;
 }
+
+int KS_List::getweights() const
+{
+  int weight_sum = 0;
+  
+  for (int i = 0; i < getsize(); ++i)
+    weight_sum += Data[i] -> getweight();
+  
+  return weight_sum;
+  
+}

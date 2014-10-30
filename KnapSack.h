@@ -23,6 +23,7 @@ public:
   bool operator!=(const KS_Item& rhs) const {return !(*this == rhs);}
   bool operator<=(const KS_Item& rhs) const {return (*this < rhs) || (*this == rhs);}
   bool operator>=(const KS_Item& rhs) const {return (*this > rhs) || (*this == rhs);}
+  friend ostream& operator << (ostream& out, const KS_Item& item) ;
 };
 
 
@@ -49,6 +50,7 @@ public:
     KS_List(const float s = 0, const float m = 0, const int sz = 1): sigma(s), mu(m), size(0) {generate(sz);}
   ~KS_List() {clear();}
   const KS_List& operator= (const KS_List& rhs);
+  friend ostream& operator << (ostream& out, const KS_List& list);
 };
 
 

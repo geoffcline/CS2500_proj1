@@ -79,3 +79,22 @@ const KS_List& KS_List::operator= (const KS_List& rhs)
   
   return *this;
 }
+
+ostream& operator << (ostream& out, const KS_List& list)
+{
+  for (int i = 0; i < list.getsize(); i++)
+  {
+    out << list[i];
+  }
+  
+  return out;
+}
+
+ostream& operator << (ostream& out, const KS_Item& item)
+{
+
+  out << "I: \t" << item.getvalue() << "\t" << item.getweight() << endl;
+  
+  return out;
+}
+

@@ -36,9 +36,11 @@ void KS_List::generate(const int newsz)
   
   for (int i = 0; i < getsize(); ++i)
   {
-    Data[i] = new KS_Item(static_cast<int>(gauss(generator)), static_cast<int>(gauss(generator)));
-    if (Data[i] -> getweight() < 0)
-      cout << "BAD WEIGHT" << endl;
+    do
+    {
+      Data[i] = new KS_Item(static_cast<int>(gauss(generator)), static_cast<int>(gauss(generator)));
+    } while (Data[i] -> getweight() < 0 || Data[i] -> getvalue() < 0);
+    
   }
   
   

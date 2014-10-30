@@ -12,7 +12,6 @@ int main ()
   const float SIGMA = 10;
   const float MU = 50;
   const int   SIZE = 300;
-  const int   TESTS = 1000; //no longer used
   const int   DATAPOINTS=10;
   const int   NUMPERPOINT=15;
   const int   MAXW = 5000;
@@ -21,6 +20,7 @@ int main ()
   
   clock_t t;
   ofstream fout;
+  
   int resultv;
   int totalresultGreedy=0;
   int totalresultDynamic=0;
@@ -37,9 +37,9 @@ int main ()
   for (int i = 0; i < DATAPOINTS*NUMPERPOINT; ++i) //denpendant->execution independant->inputsize
   {
      
-    if(i%NUMPERPOINT==0)
+    if(i%NUMPERPOINT==0 && i != 0)
     {
-      L_working.setsize(L_working.getsize() + INPUTINCREMENT);
+      L_working.generate(L_working.getsize() + INPUTINCREMENT);
   
       totalclockGreedy  = totalclockGreedy/NUMPERPOINT;
       totalresultGreedy = totalresultGreedy/NUMPERPOINT;
@@ -74,8 +74,9 @@ int main ()
     
     //BRUTE FORCE
     cout << "BRUTE TEST: \t" << i << endl;
+    cout << "BRUTE SIZE: " << L_working.getsize() << endl;
     t = clock();
-    resultv = bruteforceKS(L_working, MAXW);
+    //resultv = bruteforceKS(L_working, MAXW);
     t = clock() - t;
     fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
 
@@ -97,7 +98,7 @@ int main ()
   for (int i = 0; i < DATAPOINTS*NUMPERPOINT; ++i) //denpendant->execution independant->variance
   {
      
-    if(i%NUMPERPOINT==0)
+    if(i%NUMPERPOINT==0 && i != 0)
     {
       L_working.setsigma(L_working.getsigma()+SIGMAINCREMENT);
   
@@ -135,7 +136,7 @@ int main ()
     //BRUTE FORCE
     cout << "BRUTE TEST: \t" << i << endl;
     t = clock();
-    resultv = bruteforceKS(L_working, MAXW);
+    //resultv = bruteforceKS(L_working, MAXW);
     t = clock() - t;
     fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
 
@@ -156,9 +157,9 @@ int main ()
   for (int i = 0; i < DATAPOINTS*NUMPERPOINT; ++i) //denpendant->value independant->inputsize
   {
      
-    if(i%NUMPERPOINT==0)
+    if(i%NUMPERPOINT==0 && i != 0)
     {
-      L_working.setsize(L_working.getsize() + INPUTINCREMENT);
+      L_working.generate(L_working.getsize() + INPUTINCREMENT);
   
       totalclockGreedy  = totalclockGreedy/NUMPERPOINT;
       totalresultGreedy = totalresultGreedy/NUMPERPOINT;
@@ -194,7 +195,7 @@ int main ()
     //BRUTE FORCE
     cout << "BRUTE TEST: \t" << i << endl;
     t = clock();
-    resultv = bruteforceKS(L_working, MAXW);
+    //resultv = bruteforceKS(L_working, MAXW);
     t = clock() - t;
     fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
 
@@ -253,7 +254,7 @@ int main ()
     //BRUTE FORCE
     cout << "BRUTE TEST: \t" << i << endl;
     t = clock();
-    resultv = bruteforceKS(L_working, MAXW);
+    //resultv = bruteforceKS(L_working, MAXW);
     t = clock() - t;
     fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
 

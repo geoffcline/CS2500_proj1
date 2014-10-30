@@ -12,14 +12,14 @@ int main ()
   const float SIGMA = 10;
   const float MU = 50;
   const int   SIZE = 30;
-  const int   DATAPOINTS=1;
-  const int   NUMPERPOINT=1;
+  const int   DATAPOINTS=10;
+  const int   NUMPERPOINT=15;
   const int   MAXW = 5000;
   const int   SIGMAINCREMENT = 5;
-  const int   INPUTINCREMENT = 5;
-  const int   INITIALINPUTSIZE = 10;
+  const int   INPUTINCREMENT = 100;
+  const int   INITIALINPUTSIZE = 100;
   const int   INTIALSIGMA = 5;
-  const int   BRUTETHRESHOLD = 100;
+  const int   BRUTETHRESHOLD = 99;
   
   clock_t t;
   ofstream fout;

@@ -72,7 +72,6 @@ int main ()
     {
       cout << "BRUTE SKIP: \t" << i << endl;
       fout << "\"BRUTE 1\",\"" << i << "\",\"Input too large\"" << endl;
-      brutetooLarge++;
     }
     
     //DYNAMIC APPROACH
@@ -147,7 +146,7 @@ int main ()
     {
       cout << "BRUTE SKIP: \t" << i << endl;
       fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
-      brutetooLarge++;
+      //brutetooLarge++;
     }
     
     //DYNAMIC APPROACH
@@ -222,7 +221,7 @@ int main ()
     {
       cout << "BRUTE SKIP: \t" << i << endl;
       fout << "\"BRUTE 3\",\"" << i << "\",\"Input too large\"" << endl;
-      brutetooLarge++;
+      //brutetooLarge++;
     }    
     
     //DYNAMIC APPROACH
@@ -296,7 +295,7 @@ int main ()
     {
       cout << "BRUTE SKIP: \t" << i << endl;
       fout << "\"BRUTE 4\",\"" << i << "\",\"Input too large\"" << endl;
-      brutetooLarge++;
+      //brutetooLarge++;
     }   
     
     //DYNAMIC APPROACH

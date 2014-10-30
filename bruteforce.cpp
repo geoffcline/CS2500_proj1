@@ -1,9 +1,21 @@
 #include "bruteforce.h"
 #include <cmath>
+#include <fstream>
 
 int bruteforceKS(const KS_List& item, const int maxw)
 {
+  
+  ofstream fout;
+  
+  fout.open("brute.txt");
+  
   int n = item.getsize(); //used multiple times so variable for total amount of items
+  
+  KS_Item** solution = new KS_Item*[n];
+  
+  for (int i = 0; i < n; i++) {
+    solution[i] = nullptr;
+  }
 
   int A[n]; //array of binary values to create all combos
 
@@ -49,7 +61,6 @@ int bruteforceKS(const KS_List& item, const int maxw)
     }
      
     
-
 
   }
   

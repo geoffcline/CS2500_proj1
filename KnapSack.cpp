@@ -93,7 +93,7 @@ ostream& operator << (ostream& out, const KS_List& list)
 ostream& operator << (ostream& out, const KS_Item& item)
 {
 
-  out << "I: \t" << item.getvalue() << "\t" << item.getweight() << endl;
+  out << "I: \t" << item.getvalue() << "\t" << item.getweight();
   
   return out;
 }

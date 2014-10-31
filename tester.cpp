@@ -23,7 +23,7 @@ int main ()
   ofstream fout;
   ofstream fout2;
   
-  fout.open("result.csv");
+  fout.open("result3.csv");
   fout2.open("inputs.txt");
   fout << "\"C/S\",\"" << CLOCKS_PER_SEC << "\"" << endl;
   

@@ -9,69 +9,65 @@ using namespace std;
 
 int main ()
 {
-  const float SIGMA = 10;
+  const float SIGMA = 50;
   const float MU = 100;
-  const int   SIZE = 10;
-  //const int   DATAPOINTS=1;
-  //const int   NUMPERPOINT=1;
+  const int   SIZE = 4;
   const int   MAXW = 800;
-  //const int   SIGMAINCREMENT = 0;
-  //const int   INPUTINCREMENT = 0;
-  //const int   INITIALINPUTSIZE = 5;
-  //const int   INTIALSIGMA = 5;
-  const int   BRUTETHRESHOLD = 20;
+  
+  const int   TESTS = 16;
+  const int   INCREMENTEVERY = 1;
+  const int   INCREMENTSIZE = 1;
   
   clock_t t;
+  int resultv = 0;
   ofstream fout;
-  
-  int resultv;
-  int totalresultGreedy=0;
-  //int totalresultDynamic=0;
-  int totalresultBrute=0;
-  int totalclockGreedy=0;
-  //int totalclockDynamic=0;
-  int totalclockBrute=0;
-  int i =0;
+  ofstream fout2;
   
   fout.open("result.csv");
+  fout2.open("inputs.txt");
   fout << "\"C/S\",\"" << CLOCKS_PER_SEC << "\"" << endl;
   
   KS_List L_working(SIGMA, MU, SIZE);
   
-  //L_working.generate(INITIALINPUTSIZE);
-  
-
-   cout << "GREEDY TEST: \t" << i << endl;
-    L_working.generate();
-    cout << L_working << endl;
+  for (int i = 0; i < TESTS; i++)
+  {
+    if (i % INCREMENTEVERY == 0 && i !=0)
+      L_working.generate(L_working.getsize() + INCREMENTSIZE);
+    else
+      L_working.generate();
+    
+    fout2 << "INPUTS: " << i << endl;
+    fout2 << L_working << endl << endl << endl << endl << endl;
+    
+    
+    //GREEDY
+    cout << "GREEDY TEST: \t" << i << endl;
     t = clock();
     resultv = GreedyKS(L_working, MAXW);
     t = clock() - t;
     fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
     
-    totalclockGreedy+=t;
-    totalresultGreedy+=resultv;
+    
+    
+    //DYNAMIC
+    cout << "DYNAMIC TEST: \t" << i << endl;
+    t = clock();
+    resultv = DP_KNAPSACK(L_working, MAXW);
+    t = clock() - t;
+    fout << "\"DYNAMIC\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    
+    //BRUTE
+    cout << "BRUTE TEST: \t" << i << endl;
+    t = clock();
+    resultv = bruteforceKS(L_working, MAXW);
+    t = clock() - t;
+    fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
 
     
-    //BRUTE FORCE
-    if(L_working.getsize() < BRUTETHRESHOLD)
-    {  
-      cout << "BRUTE TEST: \t" << i << endl;
-      t = clock();
-      resultv = bruteforceKS(L_working, MAXW);
-      t = clock() - t;
-      fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
-
-      totalclockBrute+=t;
-      totalresultBrute+=resultv;
-    }
-    else
-    {
-      cout << "BRUTE SKIP: \t" << i << endl;
-      fout << "\"BRUTE\",\"" << i << "\",\"Input too large\"" << endl;
-    }   
+  }
   
   fout.close();
+  fout2.close();
 
   return 0;
 }

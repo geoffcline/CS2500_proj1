@@ -13,6 +13,8 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 //Variable to be used later
 	int currentW = 0;
 	int currentV = 0;
+  int view;
+  int view2;
 	int sizeOfList = A.getsize();
 	
 //Creates a 2D Dynamic Array to store the Values with sizeOfList and maxw
@@ -22,12 +24,15 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 	{
 		sackValues[i] = new int[sizeOfList];
 	}
-
-//when maxw is 0, value is zero
-	for (int i = 0; i < sizeOfList; i++)
-	{
-		sackValues[0][i] = 0;
-	}
+  
+  for (int k = 0; k <= maxw; k++)
+  {
+    for (int i = 0; i < sizeOfList; i++)
+    {
+      sackValues[k][i] = 0;
+    }
+  }
+	
 	
 //Goes through the entire 2D array starting at row 1 to set the the max value
 	for (int i = 0; i < sizeOfList; i++)
@@ -39,11 +44,18 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
             
 			if ( (currentW <= j) && ( (currentV + sackValues[j-currentW][i-1]) > sackValues[j][i-1] ) )
 			{
-				sackValues[j][i] = currentV + sackValues[j-currentW][i-1];
+        view = currentV + sackValues[j-currentW][i-1];
+        cout << "currentV: \t" <<currentV << endl;
+        cout << "sackvalue: \t" << sackValues[j-currentW][i-1] << endl;
+        cout << "view: \t"<<view << endl;
+        
+        sackValues[j][i] = view;
 			}
 			else 
 			{
-				sackValues[j][i] = sackValues[j][i-1];
+        view2 = sackValues[j][i-1];
+        cout << "view2: \t" << view2 << endl;
+        sackValues[j][i] = view2;
 			}
 		}
 	}

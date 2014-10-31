@@ -6,8 +6,15 @@
 int GreedyKS(const KS_List& A, const int maxw)
 {
   ofstream fout;
+  ofstream fout2;
+  ofstream fout3;
+  
   
   fout.open("greedy.txt");
+  fout2.open("greedy_raw.txt");
+  fout3.open("greedy_sort.txt");
+  
+  fout2 << A << endl;
   
   KS_List W = A;
   
@@ -27,7 +34,9 @@ int GreedyKS(const KS_List& A, const int maxw)
   
   QuickSortP(W);
   
-  for (j=0; j < W.getsize(); j++)
+  fout3 << W << endl;
+  
+  for (j= W.getsize() - 1; j >= 0; j--)
   {
     
     if((P_wgt + (W[j] -> getweight())) <= maxw)
@@ -42,6 +51,7 @@ int GreedyKS(const KS_List& A, const int maxw)
     }
   }
   
+  fout << "\tvalue \tweight" << endl;
   while(solution[k] != 0 && m < A.getsize())
   {
     fout << *solution[k] << endl;

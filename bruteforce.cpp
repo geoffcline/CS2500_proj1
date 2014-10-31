@@ -17,7 +17,7 @@ int bruteforceKS(const KS_List& item, const int maxw)
     solution[i] = 0;
   }
 
-  int A[n]; //array of binary values to create all combos
+  int* A = new int[n]; //array of binary values to create all combos
 
   
 

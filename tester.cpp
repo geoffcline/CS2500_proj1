@@ -11,12 +11,12 @@ int main ()
 {
   const float SIGMA = 50;
   const float MU = 100;
-  const int   SIZE = 4;
-  const int   MAXW = 100;
+  const int   SIZE = 20;
+  const int   MAXW = 1000;
   
-  const int   TESTS = 16;
+  const int   TESTS = 10;
   const int   INCREMENTEVERY = 1;
-  const int   INCREMENTSIZE = 1;
+  const int   INCREMENTSIZE = 0;
   
   clock_t t;
   int resultv = 0;

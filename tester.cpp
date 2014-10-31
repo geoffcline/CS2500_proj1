@@ -12,7 +12,7 @@ int main ()
   const float SIGMA = 50;
   const float MU = 100;
   const int   SIZE = 4;
-  const int   MAXW = 800;
+  const int   MAXW = 100;
   
   const int   TESTS = 16;
   const int   INCREMENTEVERY = 1;

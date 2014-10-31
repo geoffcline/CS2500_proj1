@@ -47,14 +47,14 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
         view = currentV + sackValues[j-currentW][i-1];
         cout << "currentV: \t" <<currentV << endl;
         cout << "sackvalue: \t" << sackValues[j-currentW][i-1] << endl;
-        cout << "view: \t"<<view << endl;
+        cout << "dy_if: \t\t"<<view << endl;
         
         sackValues[j][i] = view;
 			}
 			else 
 			{
         view2 = sackValues[j][i-1];
-        cout << "view2: \t" << view2 << endl;
+        cout << "dy_else: \t" << view2 << endl;
         sackValues[j][i] = view2;
 			}
 		}

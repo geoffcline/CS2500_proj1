@@ -41,7 +41,7 @@ int main ()
     
     
     //GREEDY
-    cout << "GREEDY TEST: \t" << i << endl;
+    cout << "\t\tGREEDY TEST: \t" << i << endl;
     t = clock();
     resultv = GreedyKS(L_working, MAXW);
     t = clock() - t;
@@ -50,14 +50,14 @@ int main ()
     
     
     //DYNAMIC
-    cout << "DYNAMIC TEST: \t" << i << endl;
+    cout << "\t\tDYNAMIC TEST: \t" << i << endl;
     t = clock();
     resultv = DP_KNAPSACK(L_working, MAXW);
     t = clock() - t;
     fout << "\"DYNAMIC\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
     
     //BRUTE
-    cout << "BRUTE TEST: \t" << i << endl;
+    cout << "\t\tBRUTE TEST: \t" << i << endl;
     t = clock();
     resultv = bruteforceKS(L_working, MAXW);
     t = clock() - t;

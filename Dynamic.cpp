@@ -17,25 +17,25 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 	
 //Creates a 2D Dynamic Array to store the Values with sizeOfList and maxw
 	int **sackValues;
-	sackValues = new int* [maxw];
-	for (int i = 0; i < maxw; i++)
+	sackValues = new int* [maxw+1];
+	for (int i = 0; i <= maxw; i++)
 	{
 		sackValues[i] = new int[sizeOfList];
 	}
 
-//Sets each value in row 0 and column i to 0
-	for (int i = 0; i < maxw; i++)
+//when maxw is 0, value is zero
+	for (int i = 0; i < sizeOfList; i++)
 	{
-		sackValues[i][0] = 0;
+		sackValues[0][i] = 0;
 	}
 	
 //Goes through the entire 2D array starting at row 1 to set the the max value
-	for (int i = 1; i < sizeOfList; i++)
+	for (int i = 0; i < sizeOfList; i++)
 	{
-		for (int j = 0; j < maxw; j++)
+		for (int j = 1; j <= maxw; j++)
 		{
-			currentW = A[i] -> getweight();
-            currentV = A[i] -> getvalue();
+      currentW = A[i] -> getweight();
+      currentV = A[i] -> getvalue();
             
 			if ( (currentW <= j) && ( (currentV + sackValues[j-currentW][i-1]) > sackValues[j][i-1] ) )
 			{
@@ -48,7 +48,7 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 		}
 	}
 	
-  int final = sackValues[maxw-1][sizeOfList-1];
+  int final = sackValues[maxw][sizeOfList-1];
   
   
   

@@ -20,3 +20,6 @@ Run: `./a.out`
 Valgrind: 
 
 `valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ./a.out`
+
+## Report 1
+[View Document](https://onedrive.live.com/redir?resid=F5848498F11EF7B0!13396&authkey=!AJJhoQR___6PrPA&ithint=file%2cpdf)  

@@ -27,7 +27,7 @@ int bruteforceKS(const KS_List& item, const int maxw)
   int bestValue=0;     //keeps track of max value obtained by a combo of items
   int bestWeight=0;    //same as above except for weight
 
-  for(int i=1;i<=pow(2,n);i++)
+  for(int i=1;i<pow(2,n);i++)
   {
     currentValue=0;     //resets variables so a new combo can be made
     currentWeight=0;
@@ -39,7 +39,8 @@ int bruteforceKS(const KS_List& item, const int maxw)
     
     //set value of binary in A to i;
     
-    for (int j = 0; j < n; ++j) {  // assuming a 32 bit int
+    for (int j = 0; j < n; ++j) 
+    {
       A[j] = i & (1 << j) ? 1 : 0;
     }
 

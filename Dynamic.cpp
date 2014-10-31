@@ -35,7 +35,7 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 	
 	
 //Goes through the entire 2D array starting at row 1 to set the the max value
-	for (int i = 0; i < sizeOfList; i++)
+	for (int i = 1; i < sizeOfList; i++)
 	{
 		for (int j = 1; j <= maxw; j++)
 		{

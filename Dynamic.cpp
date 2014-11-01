@@ -10,6 +10,10 @@
 int DP_KNAPSACK(const KS_List& A, const int maxw)
 {
 
+	ofstream fout;
+	fout.open("dynamic.txt");
+	
+
 //Variable to be used later
 	int currentW = 0;
 	int currentV = 0;
@@ -47,19 +51,17 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 	{
 		for (int j = 0; j <= maxw; j++)
 		{
-      currentW = A[i] -> getweight();
-      currentV = A[i] -> getvalue();
-            
+      		currentW = A[i] -> getweight();
+      		currentV = A[i] -> getvalue();
 			if ( (currentW <= j) && ( (currentV + sackValues[j-currentW][i-1]) > sackValues[j][i-1] ) )
 			{
-        sackValues[j][i] = currentV + sackValues[j-currentW][i-1];
-        keep[j][i] = 1;
-        
+        		sackValues[j][i] = currentV + sackValues[j-currentW][i-1];
+        		keep[j][i] = 1;
 			}
 			else 
 			{
-        sackValues[j][i] = sackValues[j][i-1];
-      }
+        		sackValues[j][i] = sackValues[j][i-1];
+      		}
 		}
 	}
 	
@@ -71,27 +73,19 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
     currentW = A[i] -> getweight();
     if (keep[K][i] == 1)
     {
-      cout << i << ": " << *A[i] <<  endl;
+      fout << i << ": " << *A[i] <<  endl;
       K = K - currentW;
     }
   }
-  
-  for (int i = 0; i < maxw; i++)
-  {
-    delete [] keep[i];
-  }
-  
-  delete [] keep;
-  
   
 //Delete 2D Dynamic Array
 	for (int i = 0; i < maxw; i++)
 	{
 		delete [] sackValues[i];
+    	delete [] keep[i];
 	}
-  
+  	delete [] keep;
 	delete [] sackValues;
-
 	
 	return final;
 

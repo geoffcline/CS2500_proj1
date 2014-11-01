@@ -6,6 +6,7 @@
 #include "KnapSack.h"
 #include "Dynamic.h"
 #include <iostream>
+#include <fstream>
 
 int DP_KNAPSACK(const KS_List& A, const int maxw)
 {
@@ -73,7 +74,7 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
     currentW = A[i] -> getweight();
     if (keep[K][i] == 1)
     {
-      fout << i << ": " << *A[i] <<  endl;
+      fout << *A[i] << endl;
       K = K - currentW;
     }
   }
@@ -86,6 +87,8 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 	}
   	delete [] keep;
 	delete [] sackValues;
+	
+	fout.close();
 	
 	return final;
 

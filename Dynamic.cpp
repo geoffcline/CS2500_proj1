@@ -37,23 +37,20 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
     keep[i] = new int[sizeOfList+1];
   }
   
-  for(int m = 0; m <= sizeOfList; m++)
+  for (int k = 0; k <= maxw; k++)
   {
-    for (int k = 0; k <= maxw; k++)
-    {
-      sackValues[k][m] = 0;
-      keep[k][m] = 0;
-    }
+      sackValues[k][0] = 0;
+      keep[k][0] = 0;
   }
-
+	
 	
 //Goes through the entire 2D array starting at row 1 to set the the max value
-	for (int i = 1; i <= sizeOfList; i++)
+	for (int i = 1; i < sizeOfList; i++)
 	{
 		for (int j = 0; j <= maxw; j++)
 		{
-      		currentW = A[i-1] -> getweight();
-      		currentV = A[i-1] -> getvalue();
+      		currentW = A[i] -> getweight();
+      		currentV = A[i] -> getvalue();
 			if ( (currentW <= j) && ( (currentV + sackValues[j-currentW][i-1]) > sackValues[j][i-1] ) )
 			{
         		sackValues[j][i] = currentV + sackValues[j-currentW][i-1];
@@ -66,16 +63,15 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
 		}
 	}
 	
-  int final = sackValues[maxw][sizeOfList];
+  int final = sackValues[maxw][sizeOfList-1];
   int K = maxw;
   
-
-  for (int i = sizeOfList; i >= 1; i--)
+  for (int i = sizeOfList-1; i >= 1; i--)
   {
-    currentW = A[i-1] -> getweight();
+    currentW = A[i] -> getweight();
     if (keep[K][i] == 1)
     {
-      fout << *A[i-1] << endl;
+      fout << *A[i] << endl;
       K = K - currentW;
     }
   }

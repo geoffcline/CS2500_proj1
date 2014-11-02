@@ -1,29 +1,29 @@
 #include "KnapSack.h"
 #include "Greedy.h"
-#include <iostream>
 
 int GreedyKS(const KS_List& A, const int maxw)
 {
+  
   KS_List W = A;
   
   int P_wgt = 0;
   int P_vl = 0;
-  
-  int j;
+  int P_ct = 0;
   
   QuickSortP(W);
   
-  for (j=0; j < W.getsize(); j++)
+  for (int j= W.getsize() - 1; j >= 0; j--)
   {
     
-    if((P_wgt + W[j] -> getweight()) <= maxw)
+    if((P_wgt + (W[j] -> getweight())) <= maxw)
     {
       
       P_wgt += W[j] -> getweight();
       P_vl += W[j] -> getvalue();
+      P_ct++;
+      
     }
   }
-  
   
   return P_vl;
 }

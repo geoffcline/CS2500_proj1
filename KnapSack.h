@@ -23,6 +23,7 @@ public:
   bool operator!=(const KS_Item& rhs) const {return !(*this == rhs);}
   bool operator<=(const KS_Item& rhs) const {return (*this < rhs) || (*this == rhs);}
   bool operator>=(const KS_Item& rhs) const {return (*this > rhs) || (*this == rhs);}
+  friend ostream& operator << (ostream& out, const KS_Item& item) ;
 };
 
 
@@ -50,6 +51,7 @@ public:
   ~KS_List() {clear();}
   const KS_List& operator= (const KS_List& rhs);
   int getweights() const;
+  friend ostream& operator << (ostream& out, const KS_List& list);
 };
 
 

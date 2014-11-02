@@ -90,3 +90,22 @@ int KS_List::getweights() const
   return weight_sum;
   
 }
+
+ostream& operator << (ostream& out, const KS_List& list)
+{
+  for (int i = 0; i < list.getsize(); i++)
+  {
+    out << *list[i] << endl;
+  }
+  
+  return out;
+}
+
+ostream& operator << (ostream& out, const KS_Item& item)
+{
+
+  out << "I: \t" << item.getvalue() << "\t" << item.getweight();
+  
+  return out;
+}
+

@@ -14,7 +14,7 @@ int main ()
   const int   SIZE = 20;
   const int   MAXW = 1000;
   
-  const int   TESTS = 10;
+  const int   TESTS = 1000;
   const int   INCREMENTEVERY = 1;
   const int   INCREMENTSIZE = 0;
   
@@ -45,7 +45,7 @@ int main ()
     t = clock();
     resultv = GreedyKS(L_working, MAXW);
     t = clock() - t;
-    fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    //fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
     
     
     
@@ -59,7 +59,7 @@ int main ()
     //BRUTE
     cout << "\t\tBRUTE TEST: \t" << i << endl;
     t = clock();
-    resultv = bruteforceKS(L_working, MAXW);
+    //resultv = bruteforceKS(L_working, MAXW);
     t = clock() - t;
     fout << "\"BRUTE\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
 

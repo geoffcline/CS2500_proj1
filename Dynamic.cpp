@@ -39,11 +39,8 @@ int DP_KNAPSACK(const KS_List& A, const int maxw)
   
   for (int k = 0; k <= maxw; k++)
   {
-    for (int i = 0; i < sizeOfList; i++)
-    {
-      sackValues[k][i] = 0;
-      keep[k][i] = 0;
-    }
+      sackValues[k][0] = 0;
+      keep[k][0] = 0;
   }
 	
 	

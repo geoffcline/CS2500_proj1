@@ -5,7 +5,6 @@
 
 #include "KnapSack.h"
 #include "Dynamic.h"
-#include <iostream>
 
 int DP_KNAPSACK(const KS_List& A, const int maxw)
 {

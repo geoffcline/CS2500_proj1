@@ -23,7 +23,7 @@ int main ()
   ofstream fout;
   ofstream fout2;
   
-  fout.open("result3.csv");
+  fout.open("result9.csv");
   fout2.open("inputs.txt");
   fout << "\"C/S\",\"" << CLOCKS_PER_SEC << "\"" << endl;
   
@@ -45,7 +45,7 @@ int main ()
     t = clock();
     resultv = GreedyKS(L_working, MAXW);
     t = clock() - t;
-    //fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
+    fout << "\"GREEDY\",\"" << i << "\",\"" << t << "\",\"" << resultv << "\"" << endl;
     
     
     

@@ -4,17 +4,20 @@
 int GreedyKS(const KS_List& A, const int maxw)
 {
   
-  KS_List W = A;
+  KS_List W = A;  //create working copy of initial
   
-  int P_wgt = 0;
-  int P_vl = 0;
-  int P_ct = 0;
+  int P_wgt = 0; //partial weight
+  int P_vl = 0;  //partial value
+  int P_ct = 0;  //parital count
   
-  QuickSortP(W);
+  QuickSortP(W); //sort array
   
+  
+  //move through items greatest to least
   for (int j= W.getsize() - 1; j >= 0; j--)
   {
-    
+   
+    //if item fits into current solution
     if((P_wgt + (W[j] -> getweight())) <= maxw)
     {
       
